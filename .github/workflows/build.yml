@@ -16,7 +16,7 @@ jobs:
           java-version: "21"
           distribution: "temurin"
 
-      - uses: gradle/actions/setup-gradle@v4
+      - uses: gradle/actions/setup-gradle@v6
 
       - name: Lint
         run: ./gradlew ktlintCheck
@@ -32,7 +32,7 @@ jobs:
           java-version: "21"
           distribution: "temurin"
 
-      - uses: gradle/actions/setup-gradle@v4
+      - uses: gradle/actions/setup-gradle@v6
 
       - name: Build
         run: ./gradlew build
