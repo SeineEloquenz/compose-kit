@@ -40,7 +40,7 @@ fun UpdateButton(
     ) {
         Icon(
             imageVector = Icons.Default.Sync,
-            contentDescription = stringResource(R.string.update),
+            contentDescription = stringResource(R.string.compose_kit_update),
             modifier =
                 Modifier.graphicsLayer(
                     rotationZ = if (isLoading) rotation else 0f,
