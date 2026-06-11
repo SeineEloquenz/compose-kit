@@ -2,7 +2,6 @@ package nz.eloque.compose_kit.input
 
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.interaction.collectIsFocusedAsState
-import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -113,10 +112,6 @@ fun SimpleTextField(
                 unfocusedContainerColor = Color.Transparent,
                 disabledContainerColor = Color.Transparent,
                 errorContainerColor = Color.Transparent,
-            ),
-        keyboardActions =
-            KeyboardActions(
-                onDone = { handleSubmit() },
             ),
         supportingText =
             if (isError && text.isNotBlank()) {
