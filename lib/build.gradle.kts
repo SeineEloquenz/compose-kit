@@ -30,7 +30,6 @@ kotlin {
 
     // Kotlin/Native cannot target Apple platforms from a Linux host, so only expose on macOS.
     if (System.getProperty("os.name").contains("Mac", ignoreCase = true)) {
-        iosX64()
         iosArm64()
         iosSimulatorArm64()
     }

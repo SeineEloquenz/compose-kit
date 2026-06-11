@@ -53,4 +53,4 @@ jobs:
       - uses: gradle/actions/setup-gradle@v6
 
       - name: Compile iOS targets
-        run: ./gradlew :lib:compileKotlinIosX64 :lib:compileKotlinIosArm64 :lib:compileKotlinIosSimulatorArm64
+        run: ./gradlew :lib:compileKotlinIosArm64 :lib:compileKotlinIosSimulatorArm64
