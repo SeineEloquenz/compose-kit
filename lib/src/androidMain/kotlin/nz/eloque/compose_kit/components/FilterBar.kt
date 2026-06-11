@@ -20,10 +20,12 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.platform.LocalFocusManager
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import nz.eloque.compose_kit.R
+import nz.eloque.compose_kit.resources.Res
+import nz.eloque.compose_kit.resources.compose_kit_delete
+import nz.eloque.compose_kit.resources.compose_kit_search
+import org.jetbrains.compose.resources.stringResource
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -44,10 +46,10 @@ fun FilterBar(
                 leadingIcon = {
                     Icon(
                         imageVector = Icons.Default.Search,
-                        contentDescription = stringResource(R.string.compose_kit_search),
+                        contentDescription = stringResource(Res.string.compose_kit_search),
                     )
                 },
-                placeholder = { Text(stringResource(R.string.compose_kit_search)) },
+                placeholder = { Text(stringResource(Res.string.compose_kit_search)) },
                 onQueryChange = {
                     query = it
                     onSearch.invoke(it)
@@ -69,7 +71,7 @@ fun FilterBar(
                                 onSearch.invoke("")
                             },
                         ) {
-                            Icon(imageVector = Icons.Default.Clear, contentDescription = stringResource(R.string.compose_kit_delete))
+                            Icon(imageVector = Icons.Default.Clear, contentDescription = stringResource(Res.string.compose_kit_delete))
                         }
                     }
                 },

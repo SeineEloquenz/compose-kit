@@ -15,9 +15,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import nz.eloque.compose_kit.R
+import nz.eloque.compose_kit.resources.Res
+import nz.eloque.compose_kit.resources.compose_kit_choose_image
+import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun FilePicker(
@@ -45,7 +46,7 @@ fun FilePicker(
             Text(label)
             Icon(
                 imageVector = labelIcon,
-                contentDescription = stringResource(R.string.compose_kit_choose_image),
+                contentDescription = stringResource(Res.string.compose_kit_choose_image),
             )
         }
     }

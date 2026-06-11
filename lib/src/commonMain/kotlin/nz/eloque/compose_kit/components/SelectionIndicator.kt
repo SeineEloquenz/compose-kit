@@ -11,9 +11,10 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import nz.eloque.compose_kit.R
+import nz.eloque.compose_kit.resources.Res
+import nz.eloque.compose_kit.resources.compose_kit_selected
+import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun SelectionIndicator(modifier: Modifier = Modifier) {
@@ -29,7 +30,7 @@ fun SelectionIndicator(modifier: Modifier = Modifier) {
     ) {
         Icon(
             imageVector = Icons.Default.Check,
-            contentDescription = stringResource(R.string.compose_kit_selected),
+            contentDescription = stringResource(Res.string.compose_kit_selected),
             tint = MaterialTheme.colorScheme.onPrimary,
             modifier = Modifier.size(16.dp),
         )

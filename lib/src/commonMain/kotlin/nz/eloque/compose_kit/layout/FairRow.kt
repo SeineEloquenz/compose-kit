@@ -106,7 +106,7 @@ private val previewTextData =
         listOf("AAA ".repeat(10), "BBB ".repeat(10), "CCC"),
     )
 
-@Preview(showBackground = true, widthDp = 250)
+@Preview
 @Composable
 private fun PreviewOneItem() {
     Column {
@@ -118,7 +118,7 @@ private fun PreviewOneItem() {
     }
 }
 
-@Preview(showBackground = true, widthDp = 250)
+@Preview
 @Composable
 private fun PreviewTwoItems() {
     Column {
@@ -130,7 +130,7 @@ private fun PreviewTwoItems() {
     }
 }
 
-@Preview(showBackground = true, widthDp = 250)
+@Preview
 @Composable
 private fun PreviewTwoItemsWithoutSpaceBetween() {
     Column {
@@ -142,7 +142,7 @@ private fun PreviewTwoItemsWithoutSpaceBetween() {
     }
 }
 
-@Preview(showBackground = true, widthDp = 250)
+@Preview
 @Composable
 private fun PreviewThreeItems() {
     Column {
