@@ -47,32 +47,30 @@ fun <T, F> ExtendedSelectionMenu(
             expanded = expanded,
             onDismissRequest = { expanded = false },
         ) {
-            singleOptions.forEach { option ->
-                // single select
+            singleOptions.forEach {
                 DropdownMenuItem(
-                    text = { Text(singleOptionLabel(option)) },
+                    text = { Text(singleOptionLabel(it)) },
                     leadingIcon = {
-                        if (option == selectedSingleOption) {
+                        if (it == selectedSingleOption) {
                             Icon(Icons.Default.RadioButtonChecked, stringResource(R.string.selected))
                         }
                     },
-                    onClick = { onSingleOptionSelected(option) },
+                    onClick = { onSingleOptionSelected(it) },
                 )
             }
 
             HorizontalDivider()
 
-            multiOptions.forEach { option ->
-                // multi select
-                val selected = selectedMultiOptions.contains(option)
+            multiOptions.forEach {
+                val selected = selectedMultiOptions.contains(it)
                 DropdownMenuItem(
-                    text = { Text(multiOptionLabel(option)) },
+                    text = { Text(multiOptionLabel(it)) },
                     leadingIcon = {
                         if (selected) {
                             Icon(Icons.Default.CheckBox, contentDescription = stringResource(R.string.selected))
                         }
                     },
-                    onClick = { if (selected) onMultiOptionDeselected(option) else onMultiOptionSelected(option) },
+                    onClick = { if (selected) onMultiOptionDeselected(it) else onMultiOptionSelected(it) },
                 )
             }
         }
