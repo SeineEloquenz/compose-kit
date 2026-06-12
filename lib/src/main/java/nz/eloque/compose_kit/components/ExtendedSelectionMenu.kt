@@ -24,7 +24,7 @@ import nz.eloque.compose_kit.R
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun <T, F> SelectionMenu(
+fun <T, F> ExtendedSelectionMenu(
     multiOptions: Collection<F>,
     singleOptions: List<T>,
     multiOptionLabel: (F) -> String,
