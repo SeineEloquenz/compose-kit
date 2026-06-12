@@ -13,14 +13,12 @@ import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
-import kotlinx.coroutines.delay
 import nz.eloque.compose_kit.R
 
 @Composable
@@ -34,7 +32,6 @@ fun SimpleTextField(
     enabled: Boolean = true,
     inputValidator: (String) -> Boolean = { true },
     initialValue: String = "",
-    submitDelay: Long = 999L,
     contentDescription: String = "",
 ) {
     var text by rememberSaveable { mutableStateOf(initialValue) }
@@ -51,31 +48,20 @@ fun SimpleTextField(
         }
     }
 
-    val handleSubmit by rememberUpdatedState {
+    LaunchedEffect(text) {
         if (!isError) {
+            lastValidText = text
             onSubmit(text)
         }
     }
 
-    LaunchedEffect(focused, text) {
-        if (focused) {
-            delay(submitDelay)
-            handleSubmit()
-        } else if (touched) {
+    LaunchedEffect(focused) {
+        if (!focused) {
+            touched = true
             if (isError) {
                 text = lastValidText
-            } else {
-                handleSubmit()
             }
         }
-    }
-
-    LaunchedEffect(focused) {
-        if (!focused) touched = true
-    }
-
-    LaunchedEffect(text) {
-        if (!isError) lastValidText = text
     }
 
     TextField(
