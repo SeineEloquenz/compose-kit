@@ -36,3 +36,21 @@ jobs:
 
       - name: Build
         run: ./gradlew build
+
+  # iOS targets are only declared on a macOS host (Kotlin/Native can't target Apple from Linux),
+  # so they are compiled here on a macOS runner.
+  ios:
+    needs: lint
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: actions/setup-java@v5
+        with:
+          java-version: "21"
+          distribution: "temurin"
+
+      - uses: gradle/actions/setup-gradle@v6
+
+      - name: Compile iOS targets
+        run: ./gradlew :lib:compileKotlinIosArm64 :lib:compileKotlinIosSimulatorArm64

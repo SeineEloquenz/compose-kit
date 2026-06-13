@@ -18,10 +18,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.luminance
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import nz.eloque.compose_kit.R
 import nz.eloque.compose_kit.color.darken
+import nz.eloque.compose_kit.resources.Res
+import nz.eloque.compose_kit.resources.compose_kit_selected
+import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun <T> ChipSelector(
@@ -64,7 +65,7 @@ fun <T> ChipSelector(
                     if (selected) {
                         Icon(
                             imageVector = selectedIcon,
-                            contentDescription = stringResource(R.string.compose_kit_selected),
+                            contentDescription = stringResource(Res.string.compose_kit_selected),
                         )
                     }
                 },

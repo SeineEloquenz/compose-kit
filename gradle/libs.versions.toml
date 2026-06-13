@@ -3,7 +3,11 @@ accompanistPermissions = "0.37.3"
 activityCompose = "1.13.0"
 androidGradlePlugin = "9.2.1"
 coil = "2.7.0"
-composeBom = "2026.05.01"
+composeMultiplatform = "1.11.1"
+# Compose Multiplatform material3 and material-icons-extended are versioned independently
+# of the main Compose MP version (see ComposeBuildConfig in the compose-gradle-plugin).
+composeMaterial3 = "1.9.0"
+composeMaterialIconsExtended = "1.7.3"
 jetbrainsKotlinAndroid = "2.3.21"
 ktlint = "14.2.0"
 material3 = "1.5.0-alpha21"
@@ -11,16 +15,19 @@ material3 = "1.5.0-alpha21"
 [libraries]
 accompanist-permissions = { module = "com.google.accompanist:accompanist-permissions", version.ref = "accompanistPermissions" }
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "activityCompose" }
-androidx-compose-bom = { module = "androidx.compose:compose-bom", version.ref = "composeBom" }
-androidx-material-icons-extended = { module = "androidx.compose.material:material-icons-extended" }
 androidx-material3 = { module = "androidx.compose.material3:material3", version.ref = "material3" }
-androidx-ui = { module = "androidx.compose.ui:ui" }
-androidx-ui-graphics = { module = "androidx.compose.ui:ui-graphics" }
-androidx-ui-tooling = { module = "androidx.compose.ui:ui-tooling" }
-androidx-ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview" }
 coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coil" }
+compose-runtime = { module = "org.jetbrains.compose.runtime:runtime", version.ref = "composeMultiplatform" }
+compose-foundation = { module = "org.jetbrains.compose.foundation:foundation", version.ref = "composeMultiplatform" }
+compose-material3 = { module = "org.jetbrains.compose.material3:material3", version.ref = "composeMaterial3" }
+compose-material-icons-extended = { module = "org.jetbrains.compose.material:material-icons-extended", version.ref = "composeMaterialIconsExtended" }
+compose-ui = { module = "org.jetbrains.compose.ui:ui", version.ref = "composeMultiplatform" }
+compose-components-resources = { module = "org.jetbrains.compose.components:components-resources", version.ref = "composeMultiplatform" }
+compose-components-ui-tooling-preview = { module = "org.jetbrains.compose.components:components-ui-tooling-preview", version.ref = "composeMultiplatform" }
 
 [plugins]
-android-library = { id = "com.android.library", version.ref = "androidGradlePlugin" }
+android-kotlin-multiplatform-library = { id = "com.android.kotlin.multiplatform.library", version.ref = "androidGradlePlugin" }
+kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "jetbrainsKotlinAndroid" }
+compose-multiplatform = { id = "org.jetbrains.compose", version.ref = "composeMultiplatform" }
 jetbrains-kotlin-plugin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "jetbrainsKotlinAndroid" }
 ktlint = { id = "org.jlleitschuh.gradle.ktlint", version.ref = "ktlint" }
