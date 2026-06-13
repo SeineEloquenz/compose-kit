@@ -23,9 +23,11 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import nz.eloque.compose_kit.R
+import nz.eloque.compose_kit.resources.Res
+import nz.eloque.compose_kit.resources.compose_kit_about
+import nz.eloque.compose_kit.resources.compose_kit_more_options
+import org.jetbrains.compose.resources.stringResource
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -65,7 +67,7 @@ fun <T> ComboBox(
                 IconButton(onClick = onInfo) {
                     Icon(
                         imageVector = Icons.Outlined.Info,
-                        contentDescription = stringResource(R.string.compose_kit_about),
+                        contentDescription = stringResource(Res.string.compose_kit_about),
                     )
                 }
             }
@@ -78,7 +80,7 @@ fun <T> ComboBox(
                 )
                 Icon(
                     imageVector = Icons.Default.ArrowDropDown,
-                    contentDescription = stringResource(R.string.compose_kit_more_options),
+                    contentDescription = stringResource(Res.string.compose_kit_more_options),
                     tint = MaterialTheme.colorScheme.onSurfaceVariant,
                 )
             }

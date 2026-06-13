@@ -9,10 +9,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.Layout
 import androidx.compose.ui.text.style.TextOverflow
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Constraints
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import org.jetbrains.compose.ui.tooling.preview.Preview
 
 /**
  * A layout composable that places its children in a row. Unlike [Row] each child gets an equal
@@ -106,7 +106,7 @@ private val previewTextData =
         listOf("AAA ".repeat(10), "BBB ".repeat(10), "CCC"),
     )
 
-@Preview(showBackground = true, widthDp = 250)
+@Preview
 @Composable
 private fun PreviewOneItem() {
     Column {
@@ -118,7 +118,7 @@ private fun PreviewOneItem() {
     }
 }
 
-@Preview(showBackground = true, widthDp = 250)
+@Preview
 @Composable
 private fun PreviewTwoItems() {
     Column {
@@ -130,7 +130,7 @@ private fun PreviewTwoItems() {
     }
 }
 
-@Preview(showBackground = true, widthDp = 250)
+@Preview
 @Composable
 private fun PreviewTwoItemsWithoutSpaceBetween() {
     Column {
@@ -142,7 +142,7 @@ private fun PreviewTwoItemsWithoutSpaceBetween() {
     }
 }
 
-@Preview(showBackground = true, widthDp = 250)
+@Preview
 @Composable
 private fun PreviewThreeItems() {
     Column {

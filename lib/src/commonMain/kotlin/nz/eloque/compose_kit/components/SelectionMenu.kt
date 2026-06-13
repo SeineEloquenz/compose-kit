@@ -1,6 +1,5 @@
 package nz.eloque.compose_kit.components
 
-import androidx.annotation.StringRes
 import androidx.compose.foundation.layout.Box
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Check
@@ -16,8 +15,11 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.res.stringResource
-import nz.eloque.compose_kit.R
+import nz.eloque.compose_kit.resources.Res
+import nz.eloque.compose_kit.resources.compose_kit_more_options
+import nz.eloque.compose_kit.resources.compose_kit_selected
+import org.jetbrains.compose.resources.StringResource
+import org.jetbrains.compose.resources.stringResource
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -26,7 +28,7 @@ fun <T> SelectionMenu(
     selectedOption: T,
     modifier: Modifier = Modifier,
     icon: ImageVector = Icons.Default.Menu,
-    @StringRes contentDescription: Int = R.string.compose_kit_more_options,
+    contentDescription: StringResource = Res.string.compose_kit_more_options,
     onOptionSelected: (T) -> Unit,
     optionLabel: (T) -> String,
 ) {
@@ -46,7 +48,7 @@ fun <T> SelectionMenu(
                     text = { Text(optionLabel(option)) },
                     trailingIcon = {
                         if (option == selectedOption) {
-                            Icon(Icons.Default.Check, stringResource(R.string.compose_kit_selected))
+                            Icon(Icons.Default.Check, stringResource(Res.string.compose_kit_selected))
                         }
                     },
                     onClick = { onOptionSelected(option) },

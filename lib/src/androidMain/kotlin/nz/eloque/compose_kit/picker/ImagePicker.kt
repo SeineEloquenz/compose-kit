@@ -20,10 +20,13 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
-import nz.eloque.compose_kit.R
+import nz.eloque.compose_kit.resources.Res
+import nz.eloque.compose_kit.resources.compose_kit_choose_image
+import nz.eloque.compose_kit.resources.compose_kit_clear_selection
+import nz.eloque.compose_kit.resources.compose_kit_image
+import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun ImagePicker(
@@ -56,7 +59,7 @@ fun ImagePicker(
         if (labelIcon != null) {
             Icon(
                 imageVector = labelIcon,
-                contentDescription = label ?: stringResource(R.string.compose_kit_image),
+                contentDescription = label ?: stringResource(Res.string.compose_kit_image),
             )
         }
 
@@ -69,7 +72,7 @@ fun ImagePicker(
 
         AsyncImage(
             model = imageUrl ?: defaultModel,
-            contentDescription = stringResource(R.string.compose_kit_image),
+            contentDescription = stringResource(Res.string.compose_kit_image),
             contentScale = ContentScale.Fit,
             modifier = Modifier.height(40.dp),
         )
@@ -80,7 +83,7 @@ fun ImagePicker(
         ) {
             Icon(
                 imageVector = Icons.Default.Clear,
-                contentDescription = stringResource(R.string.compose_kit_clear_selection),
+                contentDescription = stringResource(Res.string.compose_kit_clear_selection),
             )
         }
 
@@ -89,7 +92,7 @@ fun ImagePicker(
         ) {
             Icon(
                 imageVector = Icons.Default.ImageSearch,
-                contentDescription = stringResource(R.string.compose_kit_choose_image),
+                contentDescription = stringResource(Res.string.compose_kit_choose_image),
             )
         }
     }

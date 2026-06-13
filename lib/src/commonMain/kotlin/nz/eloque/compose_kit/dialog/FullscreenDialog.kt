@@ -23,7 +23,6 @@ fun FullscreenDialog(
         properties =
             DialogProperties(
                 usePlatformDefaultWidth = false,
-                decorFitsSystemWindows = false,
             ),
     ) {
         Box(
