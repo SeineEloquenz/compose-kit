@@ -19,8 +19,8 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import nz.eloque.compose_kit.resources.Res
-import nz.eloque.compose_kit.resources.more_options
-import nz.eloque.compose_kit.resources.selected
+import nz.eloque.compose_kit.resources.compose_kit_more_options
+import nz.eloque.compose_kit.resources.compose_kit_selected
 import org.jetbrains.compose.resources.StringResource
 import org.jetbrains.compose.resources.stringResource
 
@@ -37,7 +37,7 @@ fun <T, F> ExtendedSelectionMenu(
     onSingleOptionSelected: (T) -> Unit,
     onMultiOptionDeselected: (F) -> Unit,
     modifier: Modifier = Modifier,
-    contentDescription: StringResource = Res.string.more_options,
+    contentDescription: StringResource = Res.string.compose_kit_more_options,
 ) {
     var expanded by remember { mutableStateOf(false) }
 
@@ -54,7 +54,7 @@ fun <T, F> ExtendedSelectionMenu(
                     text = { Text(singleOptionLabel(it)) },
                     leadingIcon = {
                         if (it == selectedSingleOption) {
-                            Icon(Icons.Default.RadioButtonChecked, stringResource(Res.string.selected))
+                            Icon(Icons.Default.RadioButtonChecked, stringResource(Res.string.compose_kit_selected))
                         }
                     },
                     onClick = { onSingleOptionSelected(it) },
@@ -69,7 +69,7 @@ fun <T, F> ExtendedSelectionMenu(
                     text = { Text(multiOptionLabel(it)) },
                     leadingIcon = {
                         if (selected) {
-                            Icon(Icons.Default.CheckBox, contentDescription = stringResource(Res.string.selected))
+                            Icon(Icons.Default.CheckBox, contentDescription = stringResource(Res.string.compose_kit_selected))
                         }
                     },
                     onClick = { if (selected) onMultiOptionDeselected(it) else onMultiOptionSelected(it) },
