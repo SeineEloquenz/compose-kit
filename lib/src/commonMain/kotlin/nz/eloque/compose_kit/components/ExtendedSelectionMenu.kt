@@ -1,6 +1,5 @@
 package nz.eloque.foss_wallet.compose_kit.components
 
-import androidx.annotation.StringRes
 import androidx.compose.foundation.layout.Box
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.CheckBox
@@ -19,8 +18,11 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.stringResource
-import nz.eloque.compose_kit.R
+import org.jetbrains.compose.resources.StringResource
+import org.jetbrains.compose.resources.stringResource
+import nz.eloque.compose_kit.resources.Res
+import nz.eloque.compose_kit.resources.more_options
+import nz.eloque.compose_kit.resources.selected
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -35,7 +37,7 @@ fun <T, F> ExtendedSelectionMenu(
     onSingleOptionSelected: (T) -> Unit,
     onMultiOptionDeselected: (F) -> Unit,
     modifier: Modifier = Modifier,
-    @StringRes contentDescription: Int = R.string.more_options,
+    contentDescription: StringResource = Res.string.more_options,
 ) {
     var expanded by remember { mutableStateOf(false) }
 
@@ -52,7 +54,7 @@ fun <T, F> ExtendedSelectionMenu(
                     text = { Text(singleOptionLabel(it)) },
                     leadingIcon = {
                         if (it == selectedSingleOption) {
-                            Icon(Icons.Default.RadioButtonChecked, stringResource(R.string.selected))
+                            Icon(Icons.Default.RadioButtonChecked, stringResource(Res.string.selected))
                         }
                     },
                     onClick = { onSingleOptionSelected(it) },
@@ -67,7 +69,7 @@ fun <T, F> ExtendedSelectionMenu(
                     text = { Text(multiOptionLabel(it)) },
                     leadingIcon = {
                         if (selected) {
-                            Icon(Icons.Default.CheckBox, contentDescription = stringResource(R.string.selected))
+                            Icon(Icons.Default.CheckBox, contentDescription = stringResource(Res.string.selected))
                         }
                     },
                     onClick = { if (selected) onMultiOptionDeselected(it) else onMultiOptionSelected(it) },
