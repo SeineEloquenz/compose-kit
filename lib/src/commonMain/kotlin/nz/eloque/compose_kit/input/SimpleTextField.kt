@@ -103,7 +103,7 @@ fun SimpleTextField(
             ),
         supportingText =
             if (isError && text.isNotBlank()) {
-                { Text(stringResource(R.string.compose_kit_invalid_input)) }
+                { Text(stringResource(Res.string.compose_kit_invalid_input)) }
             } else {
                 null
             },
