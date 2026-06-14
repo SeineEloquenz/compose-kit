@@ -33,11 +33,14 @@ fun SimpleTextField(
     enabled: Boolean = true,
     inputValidator: (String) -> Boolean = { true },
     initialValue: String = "",
+    value: String? = null,
     contentDescription: String = "",
 ) {
-    var text by rememberSaveable { mutableStateOf(initialValue) }
+    var internalText by rememberSaveable { mutableStateOf(initialValue) }
     var lastValidText by rememberSaveable { mutableStateOf(initialValue) }
     var touched by rememberSaveable { mutableStateOf(false) }
+
+    val text = value ?: internalText
 
     val interactionSource = remember { MutableInteractionSource() }
     val focused by interactionSource.collectIsFocusedAsState()
@@ -60,7 +63,7 @@ fun SimpleTextField(
         if (!focused) {
             touched = true
             if (isError) {
-                text = lastValidText
+                if (value == null) internalText = lastValidText
             }
         }
     }
@@ -68,7 +71,7 @@ fun SimpleTextField(
     TextField(
         value = text,
         onValueChange = {
-            text = it
+            if (value == null) internalText = it
             onValueChange(it)
         },
         singleLine = singleLine,
