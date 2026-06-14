@@ -20,31 +20,26 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.input.KeyboardType
 import nz.eloque.compose_kit.resources.Res
 import nz.eloque.compose_kit.resources.compose_kit_invalid_input
 import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun SimpleTextField(
+    value: String,
+    onValueChange: (String) -> Unit,
     onSubmit: (String) -> Unit,
     imageVector: ImageVector,
     modifier: Modifier = Modifier,
-    value: String? = null,
     singleLine: Boolean = true,
-    onValueChange: (String) -> Unit = {},
     enabled: Boolean = true,
     inputValidator: (String) -> Boolean = { true },
-    initialValue: String = "",
     contentDescription: String = "",
     keyboardOptions: KeyboardOptions = KeyboardOptions.Default,
     textStyle: TextStyle = MaterialTheme.typography.bodyLarge,
 ) {
-    var localText by rememberSaveable { mutableStateOf(initialValue) }
-    var lastValidText by rememberSaveable { mutableStateOf(initialValue) }
+    var lastValidText by rememberSaveable { mutableStateOf(value) }
     var touched by rememberSaveable { mutableStateOf(false) }
-
-    val value = text ?: localText
 
     val interactionSource = remember { MutableInteractionSource() }
     val focused by interactionSource.collectIsFocusedAsState()
@@ -67,17 +62,14 @@ fun SimpleTextField(
         if (!focused) {
             touched = true
             if (isError) {
-                if (value == null) localText = lastValidText
+                onValueChange(lastValidText)
             }
         }
     }
 
     TextField(
         value = value,
-        onValueChange = {
-            if (value == null) localText = it
-            onValueChange(it)
-        },
+        onValueChange = onValueChange,
         singleLine = singleLine,
         enabled = enabled,
         isError = isError,
