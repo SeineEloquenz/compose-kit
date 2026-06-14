@@ -48,7 +48,7 @@ fun FilterBar(
                 leadingIcon = {
                     if (chip != null) {
                         InputChip(
-                            selected = true,
+                            selected = false,
                             enabled = false,
                             onClick = {},
                             label = { Text(chip) },
