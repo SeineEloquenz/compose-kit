@@ -47,12 +47,12 @@ fun FilterBar(
                 query = query,
                 leadingIcon = {
                     if (chip != null) {
-                            InputChip(
-                                selected = true,
-                                enabled = false,
-                                onClick = {},
-                                label = { Text(chip) },
-                            )
+                        InputChip(
+                            selected = true,
+                            enabled = false,
+                            onClick = {},
+                            label = { Text(chip) },
+                        )
                     } else {
                         Icon(
                             imageVector = Icons.Default.Search,
