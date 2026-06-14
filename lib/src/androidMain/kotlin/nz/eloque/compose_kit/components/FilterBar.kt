@@ -94,7 +94,7 @@ fun FilterBar(
         expanded = false,
         onExpandedChange = {},
         modifier = modifier,
-    )
+    ) {}
 }
 
 @Preview
