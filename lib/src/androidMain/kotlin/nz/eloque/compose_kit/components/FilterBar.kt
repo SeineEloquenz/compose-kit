@@ -47,23 +47,21 @@ fun FilterBar(
             SearchBarDefaults.InputField(
                 query = query,
                 leadingIcon = {
-                    Icon(
-                        imageVector = Icons.Default.Search,
-                        contentDescription = stringResource(Res.string.compose_kit_search),
-                    )
-                },
-                placeholder = {
-                    Row {
-                        Text(stringResource(Res.string.compose_kit_search))
-                        if (chip != null) {
+                    if (chip != null) {
                             InputChip(
                                 selected = true,
                                 enabled = false,
                                 onClick = {},
                                 label = { Text(chip) },
                             )
-                        }
+                    } else {
+                        Icon(
+                            imageVector = Icons.Default.Search,
+                            contentDescription = stringResource(Res.string.compose_kit_search),
+                        )
                     }
+                },
+                placeholder = { Text(stringResource(Res.string.compose_kit_search)) }
                 },
                 onQueryChange = {
                     query = it
