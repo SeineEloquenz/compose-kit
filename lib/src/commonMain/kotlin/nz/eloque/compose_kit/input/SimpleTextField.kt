@@ -2,6 +2,7 @@ package nz.eloque.compose_kit.input
 
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.interaction.collectIsFocusedAsState
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -18,6 +19,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.text.input.KeyboardType
 import nz.eloque.compose_kit.resources.Res
 import nz.eloque.compose_kit.resources.compose_kit_invalid_input
 import org.jetbrains.compose.resources.stringResource
@@ -35,6 +37,7 @@ fun SimpleTextField(
     initialValue: String = "",
     value: String? = null,
     contentDescription: String = "",
+    keyboardOptions: KeyboardOptions = KeyboardOptions.Default,
 ) {
     var internalText by rememberSaveable { mutableStateOf(initialValue) }
     var lastValidText by rememberSaveable { mutableStateOf(initialValue) }
@@ -80,6 +83,7 @@ fun SimpleTextField(
         modifier = modifier,
         textStyle = MaterialTheme.typography.bodyLarge,
         interactionSource = interactionSource,
+        keyboardOptions = keyboardOptions,
         leadingIcon = {
             Icon(
                 imageVector = imageVector,
