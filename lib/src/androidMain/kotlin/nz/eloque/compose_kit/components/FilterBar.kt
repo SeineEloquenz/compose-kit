@@ -61,7 +61,7 @@ fun FilterBar(
                         )
                     }
                 },
-                placeholder = { Text(stringResource(Res.string.compose_kit_search)) }
+                placeholder = { Text(stringResource(Res.string.compose_kit_search)) },
                 },
                 onQueryChange = {
                     query = it
