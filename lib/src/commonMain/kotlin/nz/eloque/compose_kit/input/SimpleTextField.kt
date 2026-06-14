@@ -43,14 +43,12 @@ fun SimpleTextField(
     val interactionSource = remember { MutableInteractionSource() }
     val focused by interactionSource.collectIsFocusedAsState()
 
-    val isValid by remember {
+    val isError by remember {
         derivedStateOf {
             val trimmed = value.trim()
-            trimmed.isNotEmpty() && inputValidator(trimmed)
+            trimmed.isEmpty() || !inputValidator(trimmed)
         }
     }
-
-    val isError by remember { derivedStateOf { !isValid } }
 
     LaunchedEffect(focused) {
         if (!focused && isError) {
