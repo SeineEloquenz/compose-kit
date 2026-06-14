@@ -27,7 +27,6 @@ import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun SimpleTextField(
-    title: String,
     imageVector: ImageVector,
     onSubmit: (String) -> Unit,
     modifier: Modifier = Modifier,
