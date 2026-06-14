@@ -39,37 +39,34 @@ fun SimpleTextField(
     textStyle: TextStyle = MaterialTheme.typography.bodyLarge,
 ) {
     var lastValidText by rememberSaveable { mutableStateOf(value) }
-    var touched by rememberSaveable { mutableStateOf(false) }
 
     val interactionSource = remember { MutableInteractionSource() }
     val focused by interactionSource.collectIsFocusedAsState()
 
-    val isError by remember {
+    val isValid by remember {
         derivedStateOf {
             val trimmed = value.trim()
-            touched && (trimmed.isEmpty() || !inputValidator(trimmed))
+            trimmed.isNotEmpty() && inputValidator(trimmed)
         }
     }
 
-    LaunchedEffect(value) {
-        if (!isError) {
-            lastValidText = value
-            onSubmit(value)
-        }
-    }
+    val isError by remember { derivedStateOf { !isValid } }
 
     LaunchedEffect(focused) {
-        if (!focused) {
-            touched = true
-            if (isError) {
-                onValueChange(lastValidText)
-            }
+        if (!focused && isError) {
+            onValueChange(lastValidText)
         }
     }
 
     TextField(
         value = value,
-        onValueChange = onValueChange,
+        onValueChange = {
+            onValueChange(it)
+            if (!isError) {
+                lastValidText = it
+                onSubmit(it)
+            }
+        },
         singleLine = singleLine,
         enabled = enabled,
         isError = isError,
@@ -101,7 +98,7 @@ fun SimpleTextField(
                 errorContainerColor = Color.Transparent,
             ),
         supportingText =
-            if (isError && value.isNotBlank()) {
+            if (isError) {
                 { Text(stringResource(Res.string.compose_kit_invalid_input)) }
             } else {
                 null
