@@ -18,7 +18,6 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.platform.LocalFocusManager
@@ -57,7 +56,7 @@ fun FilterBar(
                         Text(stringResource(Res.string.compose_kit_search))
                         if (chip != null) {
                             InputChip(
-                                selected = false,
+                                selected = true,
                                 enabled = false,
                                 onClick = {},
                                 label = { Text(chip) },
