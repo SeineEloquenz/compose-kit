@@ -38,6 +38,7 @@ fun SimpleTextField(
     value: String? = null,
     contentDescription: String = "",
     keyboardOptions: KeyboardOptions = KeyboardOptions.Default,
+    textStyle: TextStyle = MaterialTheme.typography.bodyLarge,
 ) {
     var internalText by rememberSaveable { mutableStateOf(initialValue) }
     var lastValidText by rememberSaveable { mutableStateOf(initialValue) }
@@ -81,7 +82,7 @@ fun SimpleTextField(
         enabled = enabled,
         isError = isError,
         modifier = modifier,
-        textStyle = MaterialTheme.typography.bodyLarge,
+        textStyle = textStyle,
         interactionSource = interactionSource,
         keyboardOptions = keyboardOptions,
         leadingIcon = {
