@@ -27,39 +27,39 @@ import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun SimpleTextField(
-    imageVector: ImageVector,
     onSubmit: (String) -> Unit,
+    imageVector: ImageVector,
     modifier: Modifier = Modifier,
+    value: String? = null,
     singleLine: Boolean = true,
     onValueChange: (String) -> Unit = {},
     enabled: Boolean = true,
     inputValidator: (String) -> Boolean = { true },
     initialValue: String = "",
-    value: String? = null,
     contentDescription: String = "",
     keyboardOptions: KeyboardOptions = KeyboardOptions.Default,
     textStyle: TextStyle = MaterialTheme.typography.bodyLarge,
 ) {
-    var internalText by rememberSaveable { mutableStateOf(initialValue) }
+    var localText by rememberSaveable { mutableStateOf(initialValue) }
     var lastValidText by rememberSaveable { mutableStateOf(initialValue) }
     var touched by rememberSaveable { mutableStateOf(false) }
 
-    val text = value ?: internalText
+    val value = text ?: localText
 
     val interactionSource = remember { MutableInteractionSource() }
     val focused by interactionSource.collectIsFocusedAsState()
 
     val isError by remember {
         derivedStateOf {
-            val trimmed = text.trim()
+            val trimmed = value.trim()
             touched && (trimmed.isEmpty() || !inputValidator(trimmed))
         }
     }
 
-    LaunchedEffect(text) {
+    LaunchedEffect(value) {
         if (!isError) {
-            lastValidText = text
-            onSubmit(text)
+            lastValidText = value
+            onSubmit(value)
         }
     }
 
@@ -67,15 +67,15 @@ fun SimpleTextField(
         if (!focused) {
             touched = true
             if (isError) {
-                if (value == null) internalText = lastValidText
+                if (value == null) localText = lastValidText
             }
         }
     }
 
     TextField(
-        value = text,
+        value = value,
         onValueChange = {
-            if (value == null) internalText = it
+            if (value == null) localText = it
             onValueChange(it)
         },
         singleLine = singleLine,
@@ -109,7 +109,7 @@ fun SimpleTextField(
                 errorContainerColor = Color.Transparent,
             ),
         supportingText =
-            if (isError && text.isNotBlank()) {
+            if (isError && value.isNotBlank()) {
                 { Text(stringResource(Res.string.compose_kit_invalid_input)) }
             } else {
                 null
