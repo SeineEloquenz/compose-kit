@@ -57,8 +57,15 @@ fun <T> SearchablePickerField(
             onValueChange = {},
             readOnly = true,
             label = { Text(label) },
-            trailingIcon = { Icon(Icons.Default.ArrowDropDown, contentDescription = stringResource(
-                Res.string.compose_kit_search)) },
+            trailingIcon = {
+                Icon(
+                    Icons.Default.ArrowDropDown,
+                    contentDescription =
+                        stringResource(
+                            Res.string.compose_kit_search,
+                        ),
+                )
+            },
             modifier = Modifier.fillMaxWidth(),
         )
         // A read-only text field still swallows taps, so overlay a transparent click target.
@@ -77,8 +84,15 @@ fun <T> SearchablePickerField(
                     onValueChange = { query = it },
                     label = { Text(searchLabel) },
                     singleLine = true,
-                    leadingIcon = { Icon(Icons.Default.Search, contentDescription = stringResource(
-                        Res.string.compose_kit_search)) },
+                    leadingIcon = {
+                        Icon(
+                            Icons.Default.Search,
+                            contentDescription =
+                                stringResource(
+                                    Res.string.compose_kit_search,
+                                ),
+                        )
+                    },
                     modifier = Modifier.fillMaxWidth(),
                 )
                 Spacer(Modifier.height(8.dp))
@@ -91,8 +105,7 @@ fun <T> SearchablePickerField(
                                 .clickable {
                                     onSelected(item)
                                     open = false
-                                }
-                                .padding(vertical = 14.dp),
+                                }.padding(vertical = 14.dp),
                         )
                     }
                     if (results.isEmpty()) {
