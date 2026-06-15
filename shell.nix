@@ -6,7 +6,7 @@
 let
   buildToolsVersion = "37.0.0";
   buildToolsVersions = [ buildToolsVersion ];
-  platformVersions = [ "37" ];
+  platformVersions = [ "36" ];
 
   pkgs = import nixpkgs {
     inherit system;
