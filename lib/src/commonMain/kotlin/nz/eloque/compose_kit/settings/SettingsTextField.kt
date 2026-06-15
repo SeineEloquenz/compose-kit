@@ -23,11 +23,11 @@ fun SettingsTextField(
     title: String,
     imageVector: ImageVector,
     onSubmit: (String) -> Unit,
+    initialValue: String,
     modifier: Modifier = Modifier,
     singleLine: Boolean = true,
     enabled: Boolean = true,
     inputValidator: (String) -> Boolean = { true },
-    initialValue: String = "",
     contentDescription: String = "",
 ) {
     var value by rememberSaveable { mutableStateOf(initialValue) }
