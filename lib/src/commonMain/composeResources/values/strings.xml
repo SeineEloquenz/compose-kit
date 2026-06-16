@@ -8,4 +8,5 @@
     <string name="compose_kit_clear_selection">Clear selection</string>
     <string name="compose_kit_about">About</string>
     <string name="compose_kit_more_options">More options</string>
+    <string name="compose_kit_invalid_input">Invalid input</string>
 </resources>
