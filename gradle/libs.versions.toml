@@ -8,7 +8,7 @@ composeMultiplatform = "1.11.1"
 # of the main Compose MP version (see ComposeBuildConfig in the compose-gradle-plugin).
 composeMaterial3 = "1.9.0"
 composeMaterialIconsExtended = "1.7.3"
-jetbrainsKotlinAndroid = "2.3.21"
+jetbrainsKotlinAndroid = "2.4.0"
 ktlint = "14.2.0"
 material3 = "1.5.0-alpha21"
 
