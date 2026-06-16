@@ -10,7 +10,6 @@ import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -33,7 +32,7 @@ fun SimpleTextField(
     modifier: Modifier = Modifier,
     singleLine: Boolean = true,
     enabled: Boolean = true,
-    inputValidator: (String) -> Boolean = { true },
+    isError: Boolean = false,
     contentDescription: String = "",
     keyboardOptions: KeyboardOptions = KeyboardOptions.Default,
     textStyle: TextStyle = MaterialTheme.typography.bodyLarge,
@@ -42,13 +41,6 @@ fun SimpleTextField(
 
     val interactionSource = remember { MutableInteractionSource() }
     val focused by interactionSource.collectIsFocusedAsState()
-
-    val isError by remember {
-        derivedStateOf {
-            val trimmed = value.trim()
-            trimmed.isEmpty() || !inputValidator(trimmed)
-        }
-    }
 
     LaunchedEffect(focused) {
         if (!focused && isError) {
