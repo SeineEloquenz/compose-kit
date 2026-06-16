@@ -7,8 +7,10 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
@@ -32,6 +34,13 @@ fun SettingsTextField(
 ) {
     var value by rememberSaveable { mutableStateOf(initialValue) }
 
+    val isError by remember {
+        derivedStateOf {
+            val trimmed = value.trim()
+            trimmed.isEmpty() || !inputValidator(trimmed)
+        }
+    }
+
     Row(
         modifier = modifier.padding(horizontal = 16.dp, vertical = 12.dp),
         horizontalArrangement = Arrangement.spacedBy(12.dp),
@@ -51,7 +60,7 @@ fun SettingsTextField(
             modifier = Modifier.weight(0.3125f),
             singleLine = singleLine,
             enabled = enabled,
-            inputValidator = inputValidator,
+            isError = isError,
             contentDescription = contentDescription,
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
         )
