@@ -19,6 +19,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.TextStyle
+import kotlinx.coroutines.delay
 import nz.eloque.compose_kit.resources.Res
 import nz.eloque.compose_kit.resources.compose_kit_invalid_input
 import org.jetbrains.compose.resources.stringResource
@@ -42,9 +43,16 @@ fun SimpleTextField(
     val interactionSource = remember { MutableInteractionSource() }
     val focused by interactionSource.collectIsFocusedAsState()
 
+    LaunchedEffect(value) {
+        if (!isError && focused) {
+            delay(999)
+            onSubmit(value)
+        }
+    }
+
     LaunchedEffect(focused) {
-        if (!focused && isError) {
-            onValueChange(lastValidText)
+        if (!isError && !focused) {
+            onSubmit(lastValidText)
         }
     }
 
@@ -54,7 +62,6 @@ fun SimpleTextField(
             onValueChange(it)
             if (!isError) {
                 lastValidText = it
-                onSubmit(it)
             }
         },
         singleLine = singleLine,
