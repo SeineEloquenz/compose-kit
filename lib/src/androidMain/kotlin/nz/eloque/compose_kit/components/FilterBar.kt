@@ -58,11 +58,12 @@ fun FilterBar(
                             label = { Text(chip, color = MaterialTheme.colorScheme.onSurfaceVariant) },
                             contentPadding = PaddingValues(horizontal = 4.dp, vertical = 0.dp),
                             modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp),
-                            border = InputChipDefaults.inputChipBorder(
-                                enabled = false,
-                                selected = false,
-                                disabledBorderColor = MaterialTheme.colorScheme.onSurfaceVariant,
-                            ),
+                            border =
+                                InputChipDefaults.inputChipBorder(
+                                    enabled = false,
+                                    selected = false,
+                                    disabledBorderColor = MaterialTheme.colorScheme.onSurfaceVariant,
+                                ),
                         )
                     } else {
                         Icon(
