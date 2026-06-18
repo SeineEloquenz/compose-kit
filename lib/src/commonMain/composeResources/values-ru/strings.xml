@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="compose_kit_selected">Выбрано</string>
+    <string name="compose_kit_search">Поиск</string>
+    <string name="compose_kit_delete">Удалить</string>
+    <string name="compose_kit_choose_image">Выберите изображение</string>
+    <string name="compose_kit_image">Изображение</string>
+    <string name="compose_kit_clear_selection">Очистить выбор</string>
+    <string name="compose_kit_about">О приложении</string>
+    <string name="compose_kit_more_options">Больше настроек</string>
+</resources>

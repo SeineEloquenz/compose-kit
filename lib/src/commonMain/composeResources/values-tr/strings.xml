@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="compose_kit_selected">Seçildi</string>
+    <string name="compose_kit_search">Ara</string>
+    <string name="compose_kit_delete">Sil</string>
+    <string name="compose_kit_choose_image">Resim seç</string>
+    <string name="compose_kit_image">Görsel</string>
+    <string name="compose_kit_clear_selection">Seçimi temizle</string>
+    <string name="compose_kit_about">Hakkında</string>
+    <string name="compose_kit_more_options">Daha fazla seçenek</string>
+</resources>

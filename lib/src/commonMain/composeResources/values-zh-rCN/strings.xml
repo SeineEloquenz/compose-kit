@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="compose_kit_selected">已选择</string>
+    <string name="compose_kit_search">搜索</string>
+    <string name="compose_kit_delete">删除</string>
+    <string name="compose_kit_choose_image">选择图片</string>
+    <string name="compose_kit_image">图片</string>
+    <string name="compose_kit_clear_selection">清除选择</string>
+    <string name="compose_kit_about">关于</string>
+    <string name="compose_kit_more_options">更多选项</string>
+</resources>

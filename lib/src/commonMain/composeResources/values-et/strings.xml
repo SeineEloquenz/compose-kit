@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="compose_kit_selected">Valitud</string>
+    <string name="compose_kit_search">Otsi</string>
+    <string name="compose_kit_delete">Kustuta</string>
+    <string name="compose_kit_choose_image">Vali pilt</string>
+    <string name="compose_kit_image">Pilt</string>
+    <string name="compose_kit_clear_selection">Tühjenda valik</string>
+    <string name="compose_kit_about">Rakenduse teave</string>
+    <string name="compose_kit_more_options">Lisavalikud</string>
+</resources>

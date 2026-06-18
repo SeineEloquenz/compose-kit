@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="compose_kit_selected">Seleccionat</string>
+    <string name="compose_kit_search">Cercar</string>
+    <string name="compose_kit_delete">Esborrar</string>
+    <string name="compose_kit_choose_image">Tria imatge</string>
+    <string name="compose_kit_image">Imatge</string>
+    <string name="compose_kit_clear_selection">Cancel·lar selecció</string>
+    <string name="compose_kit_about">A sobre de</string>
+    <string name="compose_kit_more_options">Més opcions</string>
+</resources>

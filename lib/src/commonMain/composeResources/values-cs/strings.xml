@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="compose_kit_selected">Vybráno</string>
+    <string name="compose_kit_search">Hledat</string>
+    <string name="compose_kit_delete">Odstranit</string>
+    <string name="compose_kit_choose_image">Vybrat obrázek</string>
+    <string name="compose_kit_image">Obrázek</string>
+    <string name="compose_kit_clear_selection">Vymazat výběr</string>
+    <string name="compose_kit_about">O aplikaci</string>
+    <string name="compose_kit_more_options">Další možnosti</string>
+</resources>

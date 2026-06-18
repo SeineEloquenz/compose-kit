@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="compose_kit_selected">נבחר</string>
+    <string name="compose_kit_search">חיפוש</string>
+    <string name="compose_kit_delete">מחיקה</string>
+    <string name="compose_kit_choose_image">בחר תמונה</string>
+    <string name="compose_kit_image">תמונה</string>
+    <string name="compose_kit_clear_selection">נקה בחירה</string>
+    <string name="compose_kit_about">אודות</string>
+    <string name="compose_kit_more_options">אפשרויות נוספות</string>
+</resources>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="compose_kit_selected">Geselecteerd</string>
+    <string name="compose_kit_search">Zoeken</string>
+    <string name="compose_kit_delete">Verwijderen</string>
+    <string name="compose_kit_choose_image">Afbeelding kiezen</string>
+    <string name="compose_kit_image">Beeld</string>
+    <string name="compose_kit_clear_selection">Selectie wissen</string>
+    <string name="compose_kit_about">Over</string>
+    <string name="compose_kit_more_options">Meer opties</string>
+</resources>

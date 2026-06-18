@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="compose_kit_selected">Zaznaczone</string>
+    <string name="compose_kit_search">Szukaj</string>
+    <string name="compose_kit_delete">Usuń</string>
+    <string name="compose_kit_image">Obraz</string>
+    <string name="compose_kit_about">O programie</string>
+    <string name="compose_kit_more_options">Więcej opcji</string>
+</resources>

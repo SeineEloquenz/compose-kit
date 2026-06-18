@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="compose_kit_selected">Markerat</string>
+    <string name="compose_kit_search">Sök</string>
+    <string name="compose_kit_delete">Ta bort</string>
+    <string name="compose_kit_choose_image">Välj bild</string>
+    <string name="compose_kit_image">Bild</string>
+    <string name="compose_kit_clear_selection">Rensa urval</string>
+    <string name="compose_kit_about">Om</string>
+    <string name="compose_kit_more_options">Fler alternativ</string>
+</resources>
