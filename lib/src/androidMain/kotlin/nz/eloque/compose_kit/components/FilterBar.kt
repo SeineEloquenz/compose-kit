@@ -1,8 +1,10 @@
 package nz.eloque.compose_kit.components
 
 import androidx.activity.compose.BackHandler
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Clear
 import androidx.compose.material.icons.filled.Search
@@ -10,6 +12,8 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.InputChip
+import androidx.compose.material3.InputChipDefaults
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.SearchBar
 import androidx.compose.material3.SearchBarDefaults
 import androidx.compose.material3.Text
@@ -51,7 +55,14 @@ fun FilterBar(
                             selected = false,
                             enabled = false,
                             onClick = {},
-                            label = { Text(chip) },
+                            label = { Text(chip, color = MaterialTheme.colorScheme.onSurfaceVariant) },
+                            contentPadding = PaddingValues(horizontal = 4.dp, vertical = 0.dp),
+                            modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp),
+                            border = InputChipDefaults.inputChipBorder(
+                                enabled = false,
+                                selected = false,
+                                disabledBorderColor = MaterialTheme.colorScheme.onSurfaceVariant,
+                            ),
                         )
                     } else {
                         Icon(
