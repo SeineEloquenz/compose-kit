@@ -1,19 +1,14 @@
 package nz.eloque.compose_kit.components
 
 import androidx.activity.compose.BackHandler
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxHeight
-import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Clear
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
-import androidx.compose.material3.InputChip
-import androidx.compose.material3.InputChipDefaults
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.SearchBar
 import androidx.compose.material3.SearchBarDefaults
 import androidx.compose.material3.Text
@@ -24,6 +19,7 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.onFocusChanged
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.unit.dp
 import nz.eloque.compose_kit.resources.Res
@@ -37,7 +33,7 @@ import org.jetbrains.compose.ui.tooling.preview.Preview
 fun FilterBar(
     onSearch: (String) -> Unit,
     modifier: Modifier = Modifier,
-    chip: String? = null,
+    imageVector: ImageVector = Icons.Default.Search,
 ) {
     val focusManager = LocalFocusManager.current
     var isFocused by rememberSaveable { mutableStateOf(false) }
@@ -50,27 +46,10 @@ fun FilterBar(
             SearchBarDefaults.InputField(
                 query = query,
                 leadingIcon = {
-                    if (chip != null) {
-                        InputChip(
-                            selected = false,
-                            enabled = false,
-                            onClick = {},
-                            label = { Text(chip, color = MaterialTheme.colorScheme.onSurfaceVariant) },
-                            contentPadding = PaddingValues(horizontal = 4.dp, vertical = 0.dp),
-                            modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp),
-                            border =
-                                InputChipDefaults.inputChipBorder(
-                                    enabled = false,
-                                    selected = false,
-                                    disabledBorderColor = MaterialTheme.colorScheme.onSurfaceVariant,
-                                ),
-                        )
-                    } else {
-                        Icon(
-                            imageVector = Icons.Default.Search,
-                            contentDescription = stringResource(Res.string.compose_kit_search),
-                        )
-                    }
+                    Icon(
+                        imageVector = imageVector,
+                        contentDescription = stringResource(Res.string.compose_kit_search),
+                    )
                 },
                 placeholder = { Text(stringResource(Res.string.compose_kit_search)) },
                 onQueryChange = {
