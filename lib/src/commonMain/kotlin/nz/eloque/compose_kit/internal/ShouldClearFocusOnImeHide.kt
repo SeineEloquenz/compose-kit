@@ -1,4 +1,4 @@
-package nz.eloque.compose_kit.components.internal
+package nz.eloque.compose_kit.internal
 
 import androidx.compose.runtime.Composable
 
