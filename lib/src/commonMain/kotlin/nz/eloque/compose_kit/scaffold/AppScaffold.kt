@@ -1,6 +1,7 @@
 package nz.eloque.compose_kit.scaffold
 
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.asPaddingValues
@@ -22,7 +23,7 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import nz.eloque.compose_kit.input.AbbreviatingText
 
-/**
+/*
  * [Scaffold] with a collapse-on-scroll [TopAppBar], a navigation-bar-aware FAB
  * slot, a snackbar host, and status-bar insets handled for the caller.
  *
@@ -32,10 +33,11 @@ import nz.eloque.compose_kit.input.AbbreviatingText
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AppScaffold(
-    title: String,
     modifier: Modifier = Modifier,
+    title: String? = null,
     navigationIcon: @Composable () -> Unit = {},
     actions: @Composable RowScope.() -> Unit = {},
+    subRow: (@Composable RowScope.() -> Unit)? = null,
     floatingActionButton: @Composable () -> Unit = {},
     bottomBar: @Composable () -> Unit = {},
     snackbarHostState: SnackbarHostState = remember { SnackbarHostState() },
@@ -58,6 +60,7 @@ fun AppScaffold(
                 actions = actions,
                 scrollBehavior = scrollBehavior,
             )
+            subRow?.let { Row { it() } }
         },
         contentWindowInsets = WindowInsets.statusBars,
         bottomBar = bottomBar,
