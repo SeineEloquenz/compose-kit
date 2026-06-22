@@ -68,9 +68,10 @@ fun FilterBar(
                 },
                 onExpandedChange = {},
                 expanded = false,
-                modifier = Modifier
-                    .fillMaxHeight()
-                    .onFocusChanged { isFocused = it.isFocused },
+                modifier =
+                    Modifier
+                        .fillMaxHeight()
+                        .onFocusChanged { isFocused = it.isFocused },
                 trailingIcon = {
                     if (query.isNotEmpty()) {
                         IconButton(
