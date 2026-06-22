@@ -9,7 +9,7 @@ plugins {
     `maven-publish`
 }
 
-group = "nz.eloque"
+group = "nz.eloque.compose-kit"
 version = project.findProperty("VERSION") as String? ?: "0.0.0-SNAPSHOT"
 
 kotlin {
@@ -63,5 +63,23 @@ compose.resources {
 configure<org.jlleitschuh.gradle.ktlint.KtlintExtension> {
     filter {
         exclude { it.file.path.contains("generated") }
+    }
+}
+
+// This MUST be run from a macOS host: the iOS klibs only build on a Mac, so publishing from Linux
+// would omit the Apple variants from the module metadata
+publishing {
+    repositories {
+        maven {
+            name = "staticRepo"
+            url =
+                uri(
+                    (project.findProperty("mavenRepoDir") as String?)
+                        ?: layout.buildDirectory
+                            .dir("staticRepo")
+                            .get()
+                            .asFile.path,
+                )
+        }
     }
 }

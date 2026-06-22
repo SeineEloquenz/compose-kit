@@ -1,0 +1,89 @@
+name: Publish
+
+# Publishes a static Maven repository (all targets: Android, JVM metadata, and the iOS klibs) to the
+# orphan `maven` branch of this repo. That branch is served, with no authentication for consumers, via
+# https://raw.githubusercontent.com/SeineEloquenz/compose-kit/maven/
+on:
+  push:
+    tags: ["v*"]
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "Version to publish (no leading v), e.g. 0.1.0"
+        required: true
+
+permissions:
+  contents: write
+
+# Never let two publishes race on the `maven` branch.
+concurrency:
+  group: publish-maven
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    # macOS is mandatory: Kotlin/Native can only produce the Apple (iOS) klibs on a Mac host.
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Resolve version
+        id: ver
+        run: |
+          if [ -n "${{ github.event.inputs.version }}" ]; then
+            v="${{ github.event.inputs.version }}"
+          else
+            v="${GITHUB_REF_NAME#v}"
+          fi
+          echo "Publishing version: $v"
+          echo "version=$v" >> "$GITHUB_OUTPUT"
+
+      - uses: actions/setup-java@v5
+        with:
+          java-version: "21"
+          distribution: temurin
+      - uses: gradle/actions/setup-gradle@v6
+
+      - name: Cache Kotlin/Native (~/.konan)
+        uses: actions/cache@v4
+        with:
+          path: ~/.konan
+          key: konan-${{ runner.os }}-${{ hashFiles('gradle/libs.versions.toml') }}
+          restore-keys: konan-${{ runner.os }}-
+
+      # Working copy of the static repo: clone the existing `maven` branch (so prior versions are
+      # preserved), or start a fresh orphan branch on the very first publish.
+      - name: Prepare maven-repo working copy
+        run: |
+          if git clone --depth=1 --branch maven \
+              "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git" \
+              maven-repo; then
+            echo "Cloned existing maven branch."
+          else
+            echo "No maven branch yet — creating a fresh orphan."
+            rm -rf maven-repo && mkdir maven-repo
+            cd maven-repo
+            git init -q
+            git checkout -q --orphan maven
+            git remote add origin \
+              "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git"
+          fi
+
+      - name: Publish artifacts into maven-repo
+        run: |
+          ./gradlew :lib:publishAllPublicationsToStaticRepoRepository \
+            -PVERSION="${{ steps.ver.outputs.version }}" \
+            -PmavenRepoDir="$GITHUB_WORKSPACE/maven-repo"
+
+      - name: Commit & push
+        working-directory: maven-repo
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "Nothing to publish (artifacts unchanged)."
+          else
+            git commit -q -m "Publish ${{ steps.ver.outputs.version }}"
+            git push origin HEAD:maven
+          fi
