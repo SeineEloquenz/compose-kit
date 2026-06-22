@@ -1,6 +1,8 @@
-package nz.eloque.compose_kit.internal
+package nz.eloque.compose_kit.components.internal
 
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.isImeVisible
 import androidx.compose.runtime.Composable
 
 @Composable
-internal expect fun shouldClearFocusOnImeHide(): Boolean
+internal actual fun shouldClearFocusOnImeHide(): Boolean = !WindowInsets.isImeVisible
