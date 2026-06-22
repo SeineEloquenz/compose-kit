@@ -21,6 +21,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import nz.eloque.compose_kit.components
 import nz.eloque.compose_kit.input.AbbreviatingText
 
 /*
@@ -50,11 +51,15 @@ fun AppScaffold(
         topBar = {
             TopAppBar(
                 title = {
-                    AbbreviatingText(
-                        title,
-                        style = MaterialTheme.typography.headlineMedium,
-                        maxLines = 1,
-                    )
+                    if (title != null) {
+                        AbbreviatingText(
+                            title,
+                            style = MaterialTheme.typography.headlineMedium,
+                            maxLines = 1,
+                        )
+                    } else {
+                        Row { filterBar() }
+                    }
                 },
                 navigationIcon = navigationIcon,
                 actions = actions,
