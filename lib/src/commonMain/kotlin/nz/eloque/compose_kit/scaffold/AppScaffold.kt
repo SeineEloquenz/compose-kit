@@ -21,7 +21,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import nz.eloque.compose_kit.components
+import nz.eloque.compose_kit.components.FilterBar
 import nz.eloque.compose_kit.input.AbbreviatingText
 
 /*
@@ -58,7 +58,7 @@ fun AppScaffold(
                             maxLines = 1,
                         )
                     } else {
-                        Row { filterBar() }
+                        Row { FilterBar() }
                     }
                 },
                 navigationIcon = navigationIcon,
