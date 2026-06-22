@@ -23,7 +23,7 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import nz.eloque.compose_kit.input.AbbreviatingText
 
-/*
+/**
  * [Scaffold] with a collapse-on-scroll [TopAppBar], a navigation-bar-aware FAB
  * slot, a snackbar host, and status-bar insets handled for the caller.
  *
