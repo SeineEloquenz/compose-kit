@@ -1,0 +1,372 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "nz.eloque.compose-kit",
+    "module": "lib",
+    "version": "0.2.0",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "9.5.1"
+    }
+  },
+  "variants": [
+    {
+      "name": "metadataApiElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.jvm.environment": "non-jvm",
+        "org.gradle.usage": "kotlin-metadata",
+        "org.jetbrains.kotlin.platform.type": "common"
+      },
+      "dependencies": [
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib",
+          "version": {
+            "requires": "2.3.21"
+          }
+        },
+        {
+          "group": "org.jetbrains.compose.runtime",
+          "module": "runtime",
+          "version": {
+            "requires": "1.11.1"
+          }
+        },
+        {
+          "group": "org.jetbrains.compose.foundation",
+          "module": "foundation",
+          "version": {
+            "requires": "1.11.1"
+          }
+        },
+        {
+          "group": "org.jetbrains.compose.material3",
+          "module": "material3",
+          "version": {
+            "requires": "1.9.0"
+          }
+        },
+        {
+          "group": "org.jetbrains.compose.material",
+          "module": "material-icons-extended",
+          "version": {
+            "requires": "1.7.3"
+          }
+        },
+        {
+          "group": "org.jetbrains.compose.ui",
+          "module": "ui",
+          "version": {
+            "requires": "1.11.1"
+          }
+        },
+        {
+          "group": "org.jetbrains.compose.components",
+          "module": "components-resources",
+          "version": {
+            "requires": "1.11.1"
+          }
+        },
+        {
+          "group": "org.jetbrains.compose.components",
+          "module": "components-ui-tooling-preview",
+          "version": {
+            "requires": "1.11.1"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "lib-metadata-0.2.0.jar",
+          "url": "lib-0.2.0.jar",
+          "size": 20961,
+          "sha512": "7d5d83103baf48dac742a5a7207cf0cc85c2f32f2201f60c791a685191c1f8786df4f43f6b784035aefcfe6f1c9a8f61e4f3ad78bd796ffcbbeb11a480506255",
+          "sha256": "748ec760b3ac9df26afa7de2f5b5e5cf6cafdd8d0f4ab74ee62d484a4d39dfd8",
+          "sha1": "065b6faf0887fa5dff175648ce8e40d2a6a120b0",
+          "md5": "4076d3f7d3a08c64d574c3becf621a01"
+        }
+      ]
+    },
+    {
+      "name": "metadataSourcesElements",
+      "attributes": {
+        "org.gradle.category": "documentation",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.docstype": "sources",
+        "org.gradle.jvm.environment": "non-jvm",
+        "org.gradle.usage": "kotlin-runtime",
+        "org.jetbrains.kotlin.platform.type": "common"
+      },
+      "files": [
+        {
+          "name": "lib-kotlin-0.2.0-sources.jar",
+          "url": "lib-0.2.0-sources.jar",
+          "size": 28633,
+          "sha512": "b0f310d0b9db19662899ccda8e7a6a366714b2b216689fd8a92a6ca551b1c8b4ea6ea0032d45cf01e2285fc9f2476a6e9469174af42f94e9e97c3efdf2d65bb7",
+          "sha256": "c4e3eb722e741534d39b0707d9d2d2706ae3149ec71cc7cb9d04c92ac90c4ca7",
+          "sha1": "75b7e7ae3109f82893f3b10282996fcc5a67042c",
+          "md5": "af632d84a1f538a20372f1eb02190d81"
+        }
+      ]
+    },
+    {
+      "name": "androidApiElements-published",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.jvm.environment": "android",
+        "org.gradle.libraryelements": "aar",
+        "org.gradle.usage": "java-api",
+        "org.jetbrains.kotlin.platform.type": "androidJvm"
+      },
+      "available-at": {
+        "url": "../../lib-android/0.2.0/lib-android-0.2.0.module",
+        "group": "nz.eloque.compose-kit",
+        "module": "lib-android",
+        "version": "0.2.0"
+      }
+    },
+    {
+      "name": "androidRuntimeElements-published",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.jvm.environment": "android",
+        "org.gradle.libraryelements": "aar",
+        "org.gradle.usage": "java-runtime",
+        "org.jetbrains.kotlin.platform.type": "androidJvm"
+      },
+      "available-at": {
+        "url": "../../lib-android/0.2.0/lib-android-0.2.0.module",
+        "group": "nz.eloque.compose-kit",
+        "module": "lib-android",
+        "version": "0.2.0"
+      }
+    },
+    {
+      "name": "androidSourcesElements-published",
+      "attributes": {
+        "org.gradle.category": "documentation",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.docstype": "sources",
+        "org.gradle.jvm.environment": "android",
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-runtime",
+        "org.jetbrains.kotlin.platform.type": "androidJvm"
+      },
+      "available-at": {
+        "url": "../../lib-android/0.2.0/lib-android-0.2.0.module",
+        "group": "nz.eloque.compose-kit",
+        "module": "lib-android",
+        "version": "0.2.0"
+      }
+    },
+    {
+      "name": "iosArm64ApiElements-published",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.jvm.environment": "non-jvm",
+        "org.gradle.usage": "kotlin-api",
+        "org.jetbrains.kotlin.native.target": "ios_arm64",
+        "org.jetbrains.kotlin.platform.type": "native"
+      },
+      "available-at": {
+        "url": "../../lib-iosarm64/0.2.0/lib-iosarm64-0.2.0.module",
+        "group": "nz.eloque.compose-kit",
+        "module": "lib-iosarm64",
+        "version": "0.2.0"
+      }
+    },
+    {
+      "name": "iosArm64SourcesElements-published",
+      "attributes": {
+        "org.gradle.category": "documentation",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.docstype": "sources",
+        "org.gradle.jvm.environment": "non-jvm",
+        "org.gradle.usage": "kotlin-runtime",
+        "org.jetbrains.kotlin.native.target": "ios_arm64",
+        "org.jetbrains.kotlin.platform.type": "native"
+      },
+      "available-at": {
+        "url": "../../lib-iosarm64/0.2.0/lib-iosarm64-0.2.0.module",
+        "group": "nz.eloque.compose-kit",
+        "module": "lib-iosarm64",
+        "version": "0.2.0"
+      }
+    },
+    {
+      "name": "iosArm64ResourcesElements-published",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.environment": "non-jvm",
+        "org.gradle.libraryelements": "kotlin-multiplatformresources",
+        "org.gradle.usage": "kotlin-multiplatformresources",
+        "org.jetbrains.kotlin.native.target": "ios_arm64",
+        "org.jetbrains.kotlin.platform.type": "native"
+      },
+      "available-at": {
+        "url": "../../lib-iosarm64/0.2.0/lib-iosarm64-0.2.0.module",
+        "group": "nz.eloque.compose-kit",
+        "module": "lib-iosarm64",
+        "version": "0.2.0"
+      }
+    },
+    {
+      "name": "iosArm64MetadataElements-published",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.jvm.environment": "non-jvm",
+        "org.gradle.usage": "kotlin-metadata",
+        "org.jetbrains.kotlin.native.target": "ios_arm64",
+        "org.jetbrains.kotlin.platform.type": "native"
+      },
+      "available-at": {
+        "url": "../../lib-iosarm64/0.2.0/lib-iosarm64-0.2.0.module",
+        "group": "nz.eloque.compose-kit",
+        "module": "lib-iosarm64",
+        "version": "0.2.0"
+      }
+    },
+    {
+      "name": "iosSimulatorArm64ApiElements-published",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.jvm.environment": "non-jvm",
+        "org.gradle.usage": "kotlin-api",
+        "org.jetbrains.kotlin.native.target": "ios_simulator_arm64",
+        "org.jetbrains.kotlin.platform.type": "native"
+      },
+      "available-at": {
+        "url": "../../lib-iossimulatorarm64/0.2.0/lib-iossimulatorarm64-0.2.0.module",
+        "group": "nz.eloque.compose-kit",
+        "module": "lib-iossimulatorarm64",
+        "version": "0.2.0"
+      }
+    },
+    {
+      "name": "iosSimulatorArm64SourcesElements-published",
+      "attributes": {
+        "org.gradle.category": "documentation",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.docstype": "sources",
+        "org.gradle.jvm.environment": "non-jvm",
+        "org.gradle.usage": "kotlin-runtime",
+        "org.jetbrains.kotlin.native.target": "ios_simulator_arm64",
+        "org.jetbrains.kotlin.platform.type": "native"
+      },
+      "available-at": {
+        "url": "../../lib-iossimulatorarm64/0.2.0/lib-iossimulatorarm64-0.2.0.module",
+        "group": "nz.eloque.compose-kit",
+        "module": "lib-iossimulatorarm64",
+        "version": "0.2.0"
+      }
+    },
+    {
+      "name": "iosSimulatorArm64ResourcesElements-published",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.environment": "non-jvm",
+        "org.gradle.libraryelements": "kotlin-multiplatformresources",
+        "org.gradle.usage": "kotlin-multiplatformresources",
+        "org.jetbrains.kotlin.native.target": "ios_simulator_arm64",
+        "org.jetbrains.kotlin.platform.type": "native"
+      },
+      "available-at": {
+        "url": "../../lib-iossimulatorarm64/0.2.0/lib-iossimulatorarm64-0.2.0.module",
+        "group": "nz.eloque.compose-kit",
+        "module": "lib-iossimulatorarm64",
+        "version": "0.2.0"
+      }
+    },
+    {
+      "name": "iosSimulatorArm64MetadataElements-published",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.jvm.environment": "non-jvm",
+        "org.gradle.usage": "kotlin-metadata",
+        "org.jetbrains.kotlin.native.target": "ios_simulator_arm64",
+        "org.jetbrains.kotlin.platform.type": "native"
+      },
+      "available-at": {
+        "url": "../../lib-iossimulatorarm64/0.2.0/lib-iossimulatorarm64-0.2.0.module",
+        "group": "nz.eloque.compose-kit",
+        "module": "lib-iossimulatorarm64",
+        "version": "0.2.0"
+      }
+    },
+    {
+      "name": "wasmJsApiElements-published",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.jvm.environment": "non-jvm",
+        "org.gradle.usage": "kotlin-api",
+        "org.jetbrains.kotlin.platform.type": "wasm",
+        "org.jetbrains.kotlin.wasm.target": "js"
+      },
+      "available-at": {
+        "url": "../../lib-wasm-js/0.2.0/lib-wasm-js-0.2.0.module",
+        "group": "nz.eloque.compose-kit",
+        "module": "lib-wasm-js",
+        "version": "0.2.0"
+      }
+    },
+    {
+      "name": "wasmJsRuntimeElements-published",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.jvm.environment": "non-jvm",
+        "org.gradle.usage": "kotlin-runtime",
+        "org.jetbrains.kotlin.platform.type": "wasm",
+        "org.jetbrains.kotlin.wasm.target": "js"
+      },
+      "available-at": {
+        "url": "../../lib-wasm-js/0.2.0/lib-wasm-js-0.2.0.module",
+        "group": "nz.eloque.compose-kit",
+        "module": "lib-wasm-js",
+        "version": "0.2.0"
+      }
+    },
+    {
+      "name": "wasmJsSourcesElements-published",
+      "attributes": {
+        "org.gradle.category": "documentation",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.docstype": "sources",
+        "org.gradle.jvm.environment": "non-jvm",
+        "org.gradle.usage": "kotlin-runtime",
+        "org.jetbrains.kotlin.platform.type": "wasm",
+        "org.jetbrains.kotlin.wasm.target": "js"
+      },
+      "available-at": {
+        "url": "../../lib-wasm-js/0.2.0/lib-wasm-js-0.2.0.module",
+        "group": "nz.eloque.compose-kit",
+        "module": "lib-wasm-js",
+        "version": "0.2.0"
+      }
+    },
+    {
+      "name": "wasmJsResourcesElements-published",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.environment": "non-jvm",
+        "org.gradle.libraryelements": "kotlin-multiplatformresourcesjs",
+        "org.gradle.usage": "kotlin-multiplatformresourcesjs",
+        "org.jetbrains.kotlin.platform.type": "wasm",
+        "org.jetbrains.kotlin.wasm.target": "js"
+      },
+      "available-at": {
+        "url": "../../lib-wasm-js/0.2.0/lib-wasm-js-0.2.0.module",
+        "group": "nz.eloque.compose-kit",
+        "module": "lib-wasm-js",
+        "version": "0.2.0"
+      }
+    }
+  ]
+}
