@@ -9,4 +9,5 @@
     <string name="compose_kit_about">About</string>
     <string name="compose_kit_more_options">More options</string>
     <string name="compose_kit_invalid_input">Invalid input</string>
+    <string name="compose_kit_update">Update</string>
 </resources>
