@@ -37,8 +37,8 @@ jobs:
       - name: Build
         run: ./gradlew build
 
-  # iOS targets are only declared on a macOS host (Kotlin/Native can't target Apple from Linux),
-  # so they are compiled here on a macOS runner.
+  # The iOS targets are declared for every host, but Kotlin/Native can only compile Apple targets
+  # on a macOS host (the compile tasks are disabled on Linux), so they are built here on macOS.
   ios:
     needs: lint
     runs-on: macos-latest
