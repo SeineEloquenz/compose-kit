@@ -9,7 +9,6 @@ import androidx.compose.foundation.layout.navigationBars
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.statusBars
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
@@ -21,7 +20,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import nz.eloque.compose_kit.input.AbbreviatingText
 
 /**
  * [Scaffold] with a collapse-on-scroll [TopAppBar], a navigation-bar-aware FAB
@@ -34,8 +32,7 @@ import nz.eloque.compose_kit.input.AbbreviatingText
 @Composable
 fun AppScaffold(
     modifier: Modifier = Modifier,
-    title: String? = null,
-    filterBar: @Composable RowScope.() -> Unit = {},
+    title: @Composable () -> Unit = {},
     navigationIcon: @Composable () -> Unit = {},
     actions: @Composable RowScope.() -> Unit = {},
     subRow: (@Composable RowScope.() -> Unit)? = null,
@@ -50,17 +47,7 @@ fun AppScaffold(
         snackbarHost = { SnackbarHost(hostState = snackbarHostState) },
         topBar = {
             TopAppBar(
-                title = {
-                    if (title != null) {
-                        AbbreviatingText(
-                            title,
-                            style = MaterialTheme.typography.headlineMedium,
-                            maxLines = 1,
-                        )
-                    } else {
-                        Row { filterBar() }
-                    }
-                },
+                title = title,
                 navigationIcon = navigationIcon,
                 actions = actions,
                 scrollBehavior = scrollBehavior,
