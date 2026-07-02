@@ -64,6 +64,7 @@ fun SettingsSwitch(
                             imageVector = Icons.Filled.Check,
                             contentDescription = null,
                             modifier = Modifier.size(SwitchDefaults.IconSize),
+                            tint = MaterialTheme.colorScheme.primary,
                         )
                     }
                 } else {

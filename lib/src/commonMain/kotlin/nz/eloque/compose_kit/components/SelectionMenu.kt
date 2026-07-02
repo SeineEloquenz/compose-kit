@@ -18,7 +18,6 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import nz.eloque.compose_kit.resources.Res
 import nz.eloque.compose_kit.resources.compose_kit_more_options
 import nz.eloque.compose_kit.resources.compose_kit_selected
-import org.jetbrains.compose.resources.StringResource
 import org.jetbrains.compose.resources.stringResource
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -28,7 +27,7 @@ fun <T> SelectionMenu(
     selectedOption: T,
     modifier: Modifier = Modifier,
     icon: ImageVector = Icons.Default.Menu,
-    contentDescription: StringResource = Res.string.compose_kit_more_options,
+    contentDescription: String = stringResource(Res.string.compose_kit_more_options),
     onOptionSelected: (T) -> Unit,
     optionLabel: (T) -> String,
 ) {
@@ -37,7 +36,7 @@ fun <T> SelectionMenu(
         modifier = modifier,
     ) {
         IconButton(onClick = { expanded.value = !expanded.value }) {
-            Icon(icon, contentDescription = stringResource(contentDescription))
+            Icon(icon, contentDescription = contentDescription)
         }
         DropdownMenu(
             expanded = expanded.value,

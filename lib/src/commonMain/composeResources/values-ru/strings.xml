@@ -8,4 +8,5 @@
     <string name="compose_kit_clear_selection">Очистить выбор</string>
     <string name="compose_kit_about">О приложении</string>
     <string name="compose_kit_more_options">Больше настроек</string>
+    <string name="compose_kit_update">Обновить</string>
 </resources>

@@ -1,4 +1,4 @@
-package nz.eloque.foss_wallet.compose_kit.components
+package nz.eloque.compose_kit.components
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.material.icons.Icons
@@ -21,7 +21,6 @@ import androidx.compose.ui.Modifier
 import nz.eloque.compose_kit.resources.Res
 import nz.eloque.compose_kit.resources.compose_kit_more_options
 import nz.eloque.compose_kit.resources.compose_kit_selected
-import org.jetbrains.compose.resources.StringResource
 import org.jetbrains.compose.resources.stringResource
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -37,13 +36,13 @@ fun <T, F> ExtendedSelectionMenu(
     onSingleOptionSelected: (T) -> Unit,
     onMultiOptionDeselected: (F) -> Unit,
     modifier: Modifier = Modifier,
-    contentDescription: StringResource = Res.string.compose_kit_more_options,
+    contentDescription: String = stringResource(Res.string.compose_kit_more_options),
 ) {
     var expanded by remember { mutableStateOf(false) }
 
     Box(modifier = modifier) {
         IconButton(onClick = { expanded = !expanded }) {
-            Icon(Icons.Default.FilterList, contentDescription = stringResource(contentDescription))
+            Icon(Icons.Default.FilterList, contentDescription = contentDescription)
         }
         DropdownMenu(
             expanded = expanded,
