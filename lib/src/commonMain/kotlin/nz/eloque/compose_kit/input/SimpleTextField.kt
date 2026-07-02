@@ -10,7 +10,6 @@ import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -20,6 +19,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.TextStyle
+import kotlinx.coroutines.delay
 import nz.eloque.compose_kit.resources.Res
 import nz.eloque.compose_kit.resources.compose_kit_invalid_input
 import org.jetbrains.compose.resources.stringResource
@@ -33,7 +33,7 @@ fun SimpleTextField(
     modifier: Modifier = Modifier,
     singleLine: Boolean = true,
     enabled: Boolean = true,
-    inputValidator: (String) -> Boolean = { true },
+    isError: Boolean = false,
     contentDescription: String = "",
     keyboardOptions: KeyboardOptions = KeyboardOptions.Default,
     textStyle: TextStyle = MaterialTheme.typography.bodyLarge,
@@ -43,16 +43,16 @@ fun SimpleTextField(
     val interactionSource = remember { MutableInteractionSource() }
     val focused by interactionSource.collectIsFocusedAsState()
 
-    val isError by remember {
-        derivedStateOf {
-            val trimmed = value.trim()
-            trimmed.isEmpty() || !inputValidator(trimmed)
+    LaunchedEffect(value) {
+        if (!isError && focused) {
+            delay(999)
+            onSubmit(value)
         }
     }
 
     LaunchedEffect(focused) {
-        if (!focused && isError) {
-            onValueChange(lastValidText)
+        if (!isError && !focused) {
+            onSubmit(lastValidText)
         }
     }
 
@@ -62,7 +62,6 @@ fun SimpleTextField(
             onValueChange(it)
             if (!isError) {
                 lastValidText = it
-                onSubmit(it)
             }
         },
         singleLine = singleLine,
