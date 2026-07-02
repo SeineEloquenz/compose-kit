@@ -1,6 +1,5 @@
 package nz.eloque.compose_kit.components
 
-import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.material.icons.Icons
@@ -13,31 +12,42 @@ import androidx.compose.material3.SearchBar
 import androidx.compose.material3.SearchBarDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.onFocusChanged
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalFocusManager
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import nz.eloque.compose_kit.internal.shouldClearFocusOnImeHide
 import nz.eloque.compose_kit.resources.Res
 import nz.eloque.compose_kit.resources.compose_kit_delete
 import nz.eloque.compose_kit.resources.compose_kit_search
 import org.jetbrains.compose.resources.stringResource
+import org.jetbrains.compose.ui.tooling.preview.Preview
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun FilterBar(
     onSearch: (String) -> Unit,
     modifier: Modifier = Modifier,
+    imageVector: ImageVector = Icons.Default.Search,
 ) {
     val focusManager = LocalFocusManager.current
     var isFocused by rememberSaveable { mutableStateOf(false) }
     var query by rememberSaveable { mutableStateOf("") }
+    val shouldClear = shouldClearFocusOnImeHide()
 
-    BackHandler(enabled = isFocused) { focusManager.clearFocus() }
+    LaunchedEffect(shouldClear) {
+        if (shouldClear) {
+            isFocused = false
+            focusManager.clearFocus()
+        }
+    }
+
     SearchBar(
         windowInsets = WindowInsets(0.dp),
         inputField = {
@@ -45,7 +55,7 @@ fun FilterBar(
                 query = query,
                 leadingIcon = {
                     Icon(
-                        imageVector = Icons.Default.Search,
+                        imageVector = imageVector,
                         contentDescription = stringResource(Res.string.compose_kit_search),
                     )
                 },
@@ -71,7 +81,10 @@ fun FilterBar(
                                 onSearch.invoke("")
                             },
                         ) {
-                            Icon(imageVector = Icons.Default.Clear, contentDescription = stringResource(Res.string.compose_kit_delete))
+                            Icon(
+                                imageVector = Icons.Default.Clear,
+                                contentDescription = stringResource(Res.string.compose_kit_delete),
+                            )
                         }
                     }
                 },
@@ -80,8 +93,7 @@ fun FilterBar(
         expanded = false,
         onExpandedChange = {},
         modifier = modifier,
-    ) {
-    }
+    ) {}
 }
 
 @Preview
