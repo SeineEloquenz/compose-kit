@@ -47,8 +47,8 @@ fun AppScaffold(
         snackbarHost = { SnackbarHost(hostState = snackbarHostState) },
         topBar = {
             TopAppBar(
-                title = title,
                 navigationIcon = navigationIcon,
+                title = title,
                 actions = actions,
                 scrollBehavior = scrollBehavior,
             )
