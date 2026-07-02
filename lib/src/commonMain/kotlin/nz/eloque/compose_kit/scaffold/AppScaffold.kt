@@ -1,6 +1,7 @@
 package nz.eloque.compose_kit.scaffold
 
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.asPaddingValues
@@ -8,7 +9,6 @@ import androidx.compose.foundation.layout.navigationBars
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.statusBars
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
@@ -20,7 +20,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import nz.eloque.compose_kit.input.AbbreviatingText
 
 /**
  * [Scaffold] with a collapse-on-scroll [TopAppBar], a navigation-bar-aware FAB
@@ -32,10 +31,11 @@ import nz.eloque.compose_kit.input.AbbreviatingText
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AppScaffold(
-    title: String,
     modifier: Modifier = Modifier,
+    title: @Composable () -> Unit = {},
     navigationIcon: @Composable () -> Unit = {},
     actions: @Composable RowScope.() -> Unit = {},
+    subRow: (@Composable RowScope.() -> Unit)? = null,
     floatingActionButton: @Composable () -> Unit = {},
     bottomBar: @Composable () -> Unit = {},
     snackbarHostState: SnackbarHostState = remember { SnackbarHostState() },
@@ -47,17 +47,12 @@ fun AppScaffold(
         snackbarHost = { SnackbarHost(hostState = snackbarHostState) },
         topBar = {
             TopAppBar(
-                title = {
-                    AbbreviatingText(
-                        title,
-                        style = MaterialTheme.typography.headlineMedium,
-                        maxLines = 1,
-                    )
-                },
                 navigationIcon = navigationIcon,
+                title = title,
                 actions = actions,
                 scrollBehavior = scrollBehavior,
             )
+            subRow?.let { Row { it() } }
         },
         contentWindowInsets = WindowInsets.statusBars,
         bottomBar = bottomBar,
