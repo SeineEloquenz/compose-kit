@@ -32,7 +32,7 @@ import androidx.compose.ui.unit.dp
 @Composable
 fun AppScaffold(
     modifier: Modifier = Modifier,
-    title: @Composable () -> Unit = {},
+    title: @Composable RowScope.() -> Unit = {},
     navigationIcon: @Composable () -> Unit = {},
     actions: @Composable RowScope.() -> Unit = {},
     subRow: (@Composable RowScope.() -> Unit)? = null,
