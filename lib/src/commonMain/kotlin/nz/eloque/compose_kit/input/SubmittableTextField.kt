@@ -1,9 +1,7 @@
 package nz.eloque.compose_kit.input
 
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
@@ -12,9 +10,8 @@ import androidx.compose.material.icons.filled.VisibilityOff
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextField
-import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
@@ -23,12 +20,11 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
-import androidx.compose.ui.unit.dp
 
 @Composable
 fun SubmittableTextField(
@@ -46,56 +42,97 @@ fun SubmittableTextField(
     hidden: Boolean = false,
 ) {
     var text by rememberSaveable { mutableStateOf(initialValue) }
-    var hiddenFieldVisibility by rememberSaveable { mutableStateOf(false) }
+    var passwordVisible by rememberSaveable { mutableStateOf(false) }
+
+    val trimmed = text.trim()
 
     val isError by remember {
         derivedStateOf {
-            val trimmed = text.trim()
-            trimmed.isEmpty() || !inputValidator(trimmed)
+            trimmed.isNotBlank() && !inputValidator(trimmed)
         }
     }
 
-    val errorMessage = if (isError && text.isNotBlank()) "Invalid input" else null
-    val buttonEnabled = enabled && !isError && text != initialValue
+    val buttonEnabled by remember {
+        derivedStateOf {
+            enabled &&
+                trimmed.isNotEmpty() &&
+                !isError &&
+                trimmed != initialValue
+        }
+    }
 
-    Column(modifier = modifier.fillMaxWidth()) {
-        TextField(
-            label = { Text(text = label) },
-            value = text,
-            onValueChange = {
-                text = it
-                onValueChange(it)
+    fun submit() {
+        if (!buttonEnabled) return
+
+        onSubmit(trimmed)
+
+        if (clearOnSubmit) {
+            text = ""
+        }
+    }
+
+    OutlinedTextField(
+        value = text,
+        onValueChange = {
+            text = it
+            onValueChange(it)
+        },
+        modifier = modifier.fillMaxWidth(),
+        enabled = enabled,
+        singleLine = singleLine,
+        label = { Text(label) },
+        textStyle = MaterialTheme.typography.bodyLarge,
+        isError = isError,
+        visualTransformation =
+            if (hidden && !passwordVisible) {
+                PasswordVisualTransformation()
+            } else {
+                VisualTransformation.None
             },
-            singleLine = singleLine,
-            enabled = enabled,
-            isError = isError,
-            modifier = Modifier.fillMaxWidth(),
-            textStyle = MaterialTheme.typography.bodyLarge,
-            visualTransformation =
-                if (hidden && !hiddenFieldVisibility) PasswordVisualTransformation() else VisualTransformation.None,
-            keyboardOptions =
-                if (hidden) KeyboardOptions(keyboardType = KeyboardType.Password) else KeyboardOptions.Default,
-            leadingIcon =
+        keyboardOptions =
+            KeyboardOptions(
+                keyboardType = if (hidden) KeyboardType.Password else KeyboardType.Text,
+                imeAction = ImeAction.Done,
+            ),
+        keyboardActions =
+            KeyboardActions(
+                onDone = { submit() },
+            ),
+        supportingText = {
+            if (isError) {
+                Text(
+                    text = "Invalid input",
+                    color = MaterialTheme.colorScheme.error,
+                )
+            }
+        },
+        trailingIcon = {
+            Row {
                 if (hidden) {
-                    {
-                        IconButton(onClick = { hiddenFieldVisibility = !hiddenFieldVisibility }) {
-                            Icon(
-                                imageVector = if (hiddenFieldVisibility) Icons.Filled.Visibility else Icons.Filled.VisibilityOff,
-                                contentDescription = null,
-                            )
-                        }
+                    IconButton(
+                        onClick = {
+                            passwordVisible = !passwordVisible
+                        },
+                    ) {
+                        Icon(
+                            imageVector =
+                                if (passwordVisible) {
+                                    Icons.Default.VisibilityOff
+                                } else {
+                                    Icons.Default.Visibility
+                                },
+                            contentDescription =
+                                if (passwordVisible) {
+                                    "Hide password"
+                                } else {
+                                    "Show password"
+                                },
+                        )
                     }
-                } else {
-                    null
-                },
-            trailingIcon = {
+                }
+
                 IconButton(
-                    onClick = {
-                        if (!isError) {
-                            onSubmit(text)
-                            if (clearOnSubmit) text = ""
-                        }
-                    },
+                    onClick = { submit() },
                     enabled = buttonEnabled,
                 ) {
                     Icon(
@@ -109,33 +146,7 @@ fun SubmittableTextField(
                             },
                     )
                 }
-            },
-            colors =
-                TextFieldDefaults.colors(
-                    focusedContainerColor = Color.Transparent,
-                    unfocusedContainerColor = Color.Transparent,
-                    cursorColor = MaterialTheme.colorScheme.primary,
-                ),
-            keyboardActions =
-                KeyboardActions(
-                    onDone = {
-                        if (!isError) {
-                            onSubmit(text)
-                            if (clearOnSubmit) text = ""
-                        }
-                    },
-                ),
-        )
-
-        if (errorMessage != null) {
-            Spacer(modifier = Modifier.height(2.dp))
-            Text(
-                text = errorMessage,
-                style =
-                    MaterialTheme.typography.bodySmall.copy(
-                        color = MaterialTheme.colorScheme.error,
-                    ),
-            )
-        }
-    }
+            }
+        },
+    )
 }
