@@ -1,0 +1,281 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "url": "../../lib/0.5.3/lib-0.5.3.module",
+    "group": "nz.eloque.compose-kit",
+    "module": "lib",
+    "version": "0.5.3",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "9.6.1"
+    }
+  },
+  "variants": [
+    {
+      "name": "iosSimulatorArm64ApiElements-published",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.jvm.environment": "non-jvm",
+        "org.gradle.usage": "kotlin-api",
+        "org.jetbrains.kotlin.native.target": "ios_simulator_arm64",
+        "org.jetbrains.kotlin.platform.type": "native"
+      },
+      "dependencies": [
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib",
+          "version": {
+            "requires": "2.4.10"
+          }
+        },
+        {
+          "group": "org.jetbrains.compose.runtime",
+          "module": "runtime",
+          "version": {
+            "requires": "1.11.1"
+          }
+        },
+        {
+          "group": "org.jetbrains.compose.foundation",
+          "module": "foundation",
+          "version": {
+            "requires": "1.11.1"
+          }
+        },
+        {
+          "group": "org.jetbrains.compose.material3",
+          "module": "material3",
+          "version": {
+            "requires": "1.9.0"
+          }
+        },
+        {
+          "group": "org.jetbrains.compose.material",
+          "module": "material-icons-extended",
+          "version": {
+            "requires": "1.7.3"
+          }
+        },
+        {
+          "group": "org.jetbrains.compose.ui",
+          "module": "ui",
+          "version": {
+            "requires": "1.11.1"
+          }
+        },
+        {
+          "group": "org.jetbrains.compose.components",
+          "module": "components-resources",
+          "version": {
+            "requires": "1.11.1"
+          }
+        },
+        {
+          "group": "org.jetbrains.compose.components",
+          "module": "components-ui-tooling-preview",
+          "version": {
+            "requires": "1.11.1"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "lib-iosSimulatorArm64Main-0.5.3.klib",
+          "url": "lib-iossimulatorarm64-0.5.3.klib",
+          "size": 193363,
+          "sha512": "69bff06f06dd1239aebbb685773dde62542d81c500fbf4a71c289e0d84ec5acc3f91f4de885fb07baeb93714da71eedcf4c3f49fbcda07900a1c2929fa12467d",
+          "sha256": "3cbc993b9ac2a26c0de0fb9433d6b75d498c885394df716c4256540c399bf5b1",
+          "sha1": "7ffcd6f6675046bbcdff8345faa1d6cbd4f87abd",
+          "md5": "62b9279661d542702d1e4ca70cc301d0"
+        }
+      ]
+    },
+    {
+      "name": "iosSimulatorArm64SourcesElements-published",
+      "attributes": {
+        "org.gradle.category": "documentation",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.docstype": "sources",
+        "org.gradle.jvm.environment": "non-jvm",
+        "org.gradle.usage": "kotlin-runtime",
+        "org.jetbrains.kotlin.native.target": "ios_simulator_arm64",
+        "org.jetbrains.kotlin.platform.type": "native"
+      },
+      "files": [
+        {
+          "name": "lib-iossimulatorarm64-0.5.3-sources.jar",
+          "url": "lib-iossimulatorarm64-0.5.3-sources.jar",
+          "size": 33744,
+          "sha512": "99ca35fe45ebb21770780966971bfc2128ba7afc930d2281f5e44268d6ffdbb8f8da2e928815aa4dcc022eddfa581ed50c3bfba1dd68d9a7a2f5f732746095f5",
+          "sha256": "8c7cefff9bf201ea250576612382842b980e948d4ebf089f1db83250b8493a87",
+          "sha1": "bbdd5047a9e8ad26aa4d8448bbd5b6e1f745d4cd",
+          "md5": "ef377fec1b5e676a478d849ae08a8a3b"
+        }
+      ]
+    },
+    {
+      "name": "iosSimulatorArm64ResourcesElements-published",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.environment": "non-jvm",
+        "org.gradle.libraryelements": "kotlin-multiplatformresources",
+        "org.gradle.usage": "kotlin-multiplatformresources",
+        "org.jetbrains.kotlin.native.target": "ios_simulator_arm64",
+        "org.jetbrains.kotlin.platform.type": "native"
+      },
+      "dependencies": [
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib",
+          "version": {
+            "requires": "2.4.10"
+          }
+        },
+        {
+          "group": "org.jetbrains.compose.runtime",
+          "module": "runtime",
+          "version": {
+            "requires": "1.11.1"
+          }
+        },
+        {
+          "group": "org.jetbrains.compose.foundation",
+          "module": "foundation",
+          "version": {
+            "requires": "1.11.1"
+          }
+        },
+        {
+          "group": "org.jetbrains.compose.material3",
+          "module": "material3",
+          "version": {
+            "requires": "1.9.0"
+          }
+        },
+        {
+          "group": "org.jetbrains.compose.material",
+          "module": "material-icons-extended",
+          "version": {
+            "requires": "1.7.3"
+          }
+        },
+        {
+          "group": "org.jetbrains.compose.ui",
+          "module": "ui",
+          "version": {
+            "requires": "1.11.1"
+          }
+        },
+        {
+          "group": "org.jetbrains.compose.components",
+          "module": "components-resources",
+          "version": {
+            "requires": "1.11.1"
+          }
+        },
+        {
+          "group": "org.jetbrains.compose.components",
+          "module": "components-ui-tooling-preview",
+          "version": {
+            "requires": "1.11.1"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "lib-0.5.3.kotlin_resources.zip",
+          "url": "lib-iossimulatorarm64-0.5.3-kotlin_resources.kotlin_resources.zip",
+          "size": 15010,
+          "sha512": "5e4e0b67298331bf91f25415d33fd0bec5824a71b0e73e69338b0e871887fcfae096a84e504bbb219c94694f2d21b59ba41bc124f37452a49af027751ca22a8f",
+          "sha256": "ab367a3e847293f35bfe57fb940da5ca6933c435d692cdf1c6616afb16cfc85b",
+          "sha1": "c79f6efad8eb80a6fb63210aa2e67d546f945301",
+          "md5": "e20a06105bb1de11e308e9edb9922042"
+        }
+      ]
+    },
+    {
+      "name": "iosSimulatorArm64MetadataElements-published",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.jvm.environment": "non-jvm",
+        "org.gradle.usage": "kotlin-metadata",
+        "org.jetbrains.kotlin.native.target": "ios_simulator_arm64",
+        "org.jetbrains.kotlin.platform.type": "native"
+      },
+      "dependencies": [
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib",
+          "version": {
+            "requires": "2.4.10"
+          }
+        },
+        {
+          "group": "org.jetbrains.compose.runtime",
+          "module": "runtime",
+          "version": {
+            "requires": "1.11.1"
+          }
+        },
+        {
+          "group": "org.jetbrains.compose.foundation",
+          "module": "foundation",
+          "version": {
+            "requires": "1.11.1"
+          }
+        },
+        {
+          "group": "org.jetbrains.compose.material3",
+          "module": "material3",
+          "version": {
+            "requires": "1.9.0"
+          }
+        },
+        {
+          "group": "org.jetbrains.compose.material",
+          "module": "material-icons-extended",
+          "version": {
+            "requires": "1.7.3"
+          }
+        },
+        {
+          "group": "org.jetbrains.compose.ui",
+          "module": "ui",
+          "version": {
+            "requires": "1.11.1"
+          }
+        },
+        {
+          "group": "org.jetbrains.compose.components",
+          "module": "components-resources",
+          "version": {
+            "requires": "1.11.1"
+          }
+        },
+        {
+          "group": "org.jetbrains.compose.components",
+          "module": "components-ui-tooling-preview",
+          "version": {
+            "requires": "1.11.1"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "lib-iossimulatorarm64-0.5.3-metadata.jar",
+          "url": "lib-iossimulatorarm64-0.5.3-metadata.jar",
+          "size": 3144,
+          "sha512": "6bd8e68d3c2415b6bbaf7417286c4880e45040d54481932b61c8ea10a4a46d7eb149e74210e4f0af3d6309df038452bada48240bcaf3b6eee9a23601c0a70e97",
+          "sha256": "e454a6411b50204927d86c2ce7bb9d4c55a0fa750d2a96dd50b99d8e6c0a215e",
+          "sha1": "01b3b15b5f2181bb1cecb8a78a690038d29d0496",
+          "md5": "adc448ea67fb9a3d2c1cbc39bb3c0cf5"
+        }
+      ]
+    }
+  ]
+}
