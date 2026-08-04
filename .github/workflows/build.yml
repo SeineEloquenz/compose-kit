@@ -16,7 +16,7 @@ jobs:
           java-version: "21"
           distribution: "temurin"
 
-      - uses: gradle/actions/setup-gradle@v6
+      - uses: gradle/actions/setup-gradle@v6.2.0
 
       - name: Lint
         run: ./gradlew ktlintCheck
@@ -32,7 +32,7 @@ jobs:
           java-version: "21"
           distribution: "temurin"
 
-      - uses: gradle/actions/setup-gradle@v6
+      - uses: gradle/actions/setup-gradle@v6.2.0
 
       - name: Build
         run: ./gradlew build
@@ -50,7 +50,7 @@ jobs:
           java-version: "21"
           distribution: "temurin"
 
-      - uses: gradle/actions/setup-gradle@v6
+      - uses: gradle/actions/setup-gradle@v6.2.0
 
       - name: Compile iOS targets
         run: ./gradlew :lib:compileKotlinIosArm64 :lib:compileKotlinIosSimulatorArm64
