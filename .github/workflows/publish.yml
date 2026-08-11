@@ -42,7 +42,7 @@ jobs:
         with:
           java-version: "21"
           distribution: temurin
-      - uses: gradle/actions/setup-gradle@v6.2.0
+      - uses: gradle/actions/setup-gradle@v6.3.0
 
       - name: Cache Kotlin/Native (~/.konan)
         uses: actions/cache@v6
