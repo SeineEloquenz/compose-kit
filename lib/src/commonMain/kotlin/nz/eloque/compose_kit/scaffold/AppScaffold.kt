@@ -1,6 +1,8 @@
 package nz.eloque.compose_kit.scaffold
 
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.navigationBars
@@ -34,6 +36,7 @@ fun AppScaffold(
     title: @Composable () -> Unit = {},
     navigationIcon: @Composable () -> Unit = {},
     actions: @Composable RowScope.() -> Unit = {},
+    subRow: (@Composable RowScope.() -> Unit)? = null,
     floatingActionButton: @Composable () -> Unit = {},
     bottomBar: @Composable () -> Unit = {},
     snackbarHostState: SnackbarHostState = remember { SnackbarHostState() },
@@ -44,12 +47,15 @@ fun AppScaffold(
     Scaffold(
         snackbarHost = { SnackbarHost(hostState = snackbarHostState) },
         topBar = {
-            TopAppBar(
-                navigationIcon = navigationIcon,
-                title = title,
-                actions = actions,
-                scrollBehavior = scrollBehavior,
-            )
+            Column {
+                TopAppBar(
+                    navigationIcon = navigationIcon,
+                    title = title,
+                    actions = actions,
+                    scrollBehavior = scrollBehavior,
+                )
+                subRow?.let { Row { it() } }
+            }
         },
         contentWindowInsets = WindowInsets.statusBars,
         bottomBar = bottomBar,
