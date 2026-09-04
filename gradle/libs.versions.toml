@@ -3,7 +3,7 @@ accompanistPermissions = "0.37.3"
 activityCompose = "1.13.0"
 androidGradlePlugin = "9.3.1"
 coil = "2.7.0"
-composeMultiplatform = "1.11.1"
+composeMultiplatform = "1.12.0"
 # Compose Multiplatform material3 and material-icons-extended are versioned independently
 # of the main Compose MP version (see ComposeBuildConfig in the compose-gradle-plugin).
 composeMaterial3 = "1.9.0"

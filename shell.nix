@@ -59,7 +59,9 @@ in
       # Make the node dir the Kotlin/Wasm tooling expects resolve to the runnable Nix node.
       gradle_home="''${GRADLE_USER_HOME:-$HOME/.gradle}"
       mkdir -p "$gradle_home/nodejs"
-      ln -sfn ${pkgs.nodejs} "$gradle_home/nodejs/${nodeDir}"
+      # A node dir downloaded by an older build has to go first, ln would nest the symlink in it.
+      rm -rf "$gradle_home/nodejs/${nodeDir}"
+      ln -s ${pkgs.nodejs} "$gradle_home/nodejs/${nodeDir}"
     '';
   };
 }
