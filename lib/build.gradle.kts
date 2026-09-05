@@ -12,6 +12,8 @@ plugins {
 group = "nz.eloque.compose-kit"
 version = project.findProperty("VERSION") as String? ?: "0.0.0-SNAPSHOT"
 
+val isJitPackBuild = providers.environmentVariable("JITPACK").orNull == "true"
+
 kotlin {
     android {
         namespace = "nz.eloque.compose_kit"
@@ -33,7 +35,9 @@ kotlin {
 
     wasmJs {
         browser()
-        binaries.executable()
+        if (!isJitPackBuild) {
+            binaries.executable()
+        }
     }
 
     sourceSets {
