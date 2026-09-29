@@ -55,7 +55,10 @@ fun SettingsTextField(
         SimpleTextField(
             value = value,
             imageVector = imageVector,
-            onSubmit = onSubmit,
+            onSubmit = {
+                val trimmed = it.trim()
+                if (trimmed.isNotEmpty() && inputValidator(trimmed)) onSubmit(trimmed)
+            },
             onValueChange = { value = it },
             modifier = Modifier.weight(0.3125f),
             singleLine = singleLine,
