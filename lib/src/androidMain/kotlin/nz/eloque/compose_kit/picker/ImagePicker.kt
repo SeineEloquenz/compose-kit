@@ -37,19 +37,13 @@ fun ImagePicker(
     label: String? = null,
     labelIcon: ImageVector? = null,
     defaultModel: Any? = null,
+    mimeTypes: Array<String> = arrayOf("image/png", "image/jpeg"),
 ) {
     val launcher =
         rememberLauncherForActivityResult(ActivityResultContracts.OpenDocument()) { uri ->
             onChoose(uri)
         }
-    val launchPicker = {
-        launcher.launch(
-            arrayOf(
-                "image/png",
-                "image/jpeg",
-            ),
-        )
-    }
+    val launchPicker = { launcher.launch(mimeTypes) }
 
     Row(
         horizontalArrangement = Arrangement.SpaceBetween,
