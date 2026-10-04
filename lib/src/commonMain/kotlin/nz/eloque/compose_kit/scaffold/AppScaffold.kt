@@ -15,14 +15,20 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.TopAppBarScrollBehavior
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 
+/** The [SnackbarHostState] shown by the enclosing [AppScaffold]. */
+val LocalSnackbarHostState = staticCompositionLocalOf<SnackbarHostState> { error("No SnackbarHostState provided") }
+
 /**
  * [Scaffold] with a collapse-on-scroll [TopAppBar], a navigation-bar-aware FAB
  * slot, a snackbar host, and status-bar insets handled for the caller.
+ * [content] can reach the snackbar host through [LocalSnackbarHostState].
  *
  * [content] receives the [TopAppBarScrollBehavior] so a scrollable child can drive the
  * collapsing top bar via `Modifier.nestedScroll(scrollBehavior.nestedScrollConnection)`.
@@ -65,7 +71,9 @@ fun AppScaffold(
                     .padding(innerPadding)
                     .padding(horizontal = contentHorizontalPadding),
         ) {
-            content(scrollBehavior)
+            CompositionLocalProvider(LocalSnackbarHostState provides snackbarHostState) {
+                content(scrollBehavior)
+            }
         }
     }
 }
