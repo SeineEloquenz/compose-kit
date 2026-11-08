@@ -21,7 +21,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
-import coil.compose.AsyncImage
+import coil3.compose.AsyncImage
 import nz.eloque.compose_kit.resources.Res
 import nz.eloque.compose_kit.resources.compose_kit_choose_image
 import nz.eloque.compose_kit.resources.compose_kit_clear_selection

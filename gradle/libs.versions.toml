@@ -2,7 +2,7 @@
 accompanistPermissions = "0.37.3"
 activityCompose = "1.13.0"
 androidGradlePlugin = "9.5.0"
-coil = "2.7.0"
+coil = "3.6.3"
 composeMultiplatform = "1.12.2"
 # Compose Multiplatform material3 and material-icons-extended are versioned independently
 # of the main Compose MP version (see ComposeBuildConfig in the compose-gradle-plugin).
@@ -16,7 +16,7 @@ material3 = "1.5.0-beta02"
 accompanist-permissions = { module = "com.google.accompanist:accompanist-permissions", version.ref = "accompanistPermissions" }
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "activityCompose" }
 androidx-material3 = { module = "androidx.compose.material3:material3", version.ref = "material3" }
-coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coil" }
+coil-compose = { module = "io.coil-kt.coil3:coil-compose", version.ref = "coil" }
 compose-runtime = { module = "org.jetbrains.compose.runtime:runtime", version.ref = "composeMultiplatform" }
 compose-foundation = { module = "org.jetbrains.compose.foundation:foundation", version.ref = "composeMultiplatform" }
 compose-material3 = { module = "org.jetbrains.compose.material3:material3", version.ref = "composeMaterial3" }
